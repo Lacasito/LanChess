@@ -86,3 +86,8 @@ void GraphicsEngine::loadGraphicsFiles(std::string& path){
 
 }
 
+void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest){
+
+	SDL_BlitSurface(src, 0, dest, 0);
+}
+
