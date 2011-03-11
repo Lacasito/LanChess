@@ -21,17 +21,23 @@ class GraphicsEngine {
 
 		SDL_Surface *screen;
 		SDL_Surface *pawnSrf, *rookSrf, *knightSrf, *bishopSrf, *kingSrf, *queenSrf;
+		SDL_Surface *squareSrf;
 		SDL_Surface *board;
 
-		SDL_Surface *loadImg (std::string path);
+		SDL_Surface *loadImg (std::string& path);
 		void applySurface(SDL_Surface *source, SDL_Surface *destination);
 
+		//TODO: Use a #define instead?
+		const std::string windowTitle = "LanChess";
 	public:
-		GraphicsEngine(int BPP, int WIDTH, int HEIGHT, std::string path);
+		GraphicsEngine();
 		~GraphicsEngine();
-		void init(bool& errorCode);
+
+		//TODO: should init be the constructor? if so, how do we know if there was an error?
+		void init(int BPP, int WIDTH, int HEIGHT, std::string& path, bool& errorCode);
 		void drawBoard();
 		void drawPiece(LCVAR_PieceType type, int x, int y);
+		void loadGraphicsFiles(std::string& path);
 };
 
 
