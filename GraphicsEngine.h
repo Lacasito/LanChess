@@ -38,6 +38,7 @@ class GraphicsEngine {
 		void drawBoard();
 		void drawPiece(LCVAR_PieceType type, int x, int y);
 		void loadGraphicsFiles(std::string& path);
+		void drawToScreen();
 };
 
 

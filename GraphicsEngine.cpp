@@ -144,3 +144,11 @@ void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest, int x, in
 	SDL_BlitSurface(src, 0, dest, &offset);
 }
 
+void GraphicsEngine::drawToScreen()
+{
+	applySurface(board, screen, 0, 0);
+	SDL_Flip(screen);
+}
+
+
+
