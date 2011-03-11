@@ -86,8 +86,13 @@ void GraphicsEngine::loadGraphicsFiles(std::string& path){
 
 }
 
-void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest){
+void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest, int x, int y){
 
-	SDL_BlitSurface(src, 0, dest, 0);
+	SDL_Rect offset;
+
+	offset.x = x;
+	offset.y = y;
+
+	SDL_BlitSurface(src, 0, dest, &offset);
 }
 
