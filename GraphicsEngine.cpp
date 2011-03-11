@@ -62,6 +62,7 @@ SDL_Surface *GraphicsEngine::loadImg (std::string& path){
 
 void GraphicsEngine::drawBoard()
 {
+	//FIXME: board should be initialised before used
 	for(int i = 0; i < 8; ++i){
 
 		for(int j = 0; j < 8; ++j){
@@ -71,6 +72,40 @@ void GraphicsEngine::drawBoard()
 		}
 	}
 
+}
+
+void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
+{
+	SDL_Surface* toDraw;
+
+	switch(type){
+
+		case PAWN:
+			toDraw = pawnSrf;
+			break;
+
+		case ROOK:
+			toDraw = rookSrf;
+			break;
+
+		case KNIGHT:
+			toDraw = knightSrf;
+			break;
+
+		case BISHOP:
+			toDraw = bishopSrf;
+			break;
+
+		case KING:
+			toDraw = kingSrf;
+			break;
+
+		case QUEEN:
+			toDraw = queenSrf;
+			break;
+	}
+
+	applySurface(board, toDraw, x*width/8, y*height/8);
 }
 
 void GraphicsEngine::loadGraphicsFiles(std::string& path){
