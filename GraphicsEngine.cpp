@@ -60,6 +60,19 @@ SDL_Surface *GraphicsEngine::loadImg (std::string& path){
 
 }
 
+void GraphicsEngine::drawBoard()
+{
+	for(int i = 0; i < 8; ++i){
+
+		for(int j = 0; j < 8; ++j){
+
+				applySurface(squareSrf, board, j*width/8, i*height/8);
+
+		}
+	}
+
+}
+
 void GraphicsEngine::loadGraphicsFiles(std::string& path){
 
 	/*TODO: filenames should not be hard-coded or at least not in
