@@ -24,11 +24,12 @@ class GraphicsEngine {
 		SDL_Surface *squareSrf;
 		SDL_Surface *board;
 
+		//TODO: Use a #define instead?
+		std::string windowTitle;
+
 		SDL_Surface *loadImg (std::string& path);
 		void applySurface(SDL_Surface *source, SDL_Surface *destination, int x, int y);
 
-		//TODO: Use a #define instead?
-		const std::string windowTitle = "LanChess";
 	public:
 		GraphicsEngine();
 		~GraphicsEngine();

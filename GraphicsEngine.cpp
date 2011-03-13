@@ -2,6 +2,8 @@
 
 GraphicsEngine::GraphicsEngine (){
 
+	windowTitle = "LanChess";
+
 }
 
 GraphicsEngine::~GraphicsEngine(){
@@ -19,7 +21,7 @@ GraphicsEngine::~GraphicsEngine(){
 
 }
 
-GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, std::string& path, bool& errorCode) {
+void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, std::string& path, bool& errorCode) {
 
 	errorCode = 0;
 
@@ -56,7 +58,7 @@ SDL_Surface *GraphicsEngine::loadImg (std::string& path){
 
 	}
 
-	return opmizedImg;
+	return optimizedImg;
 
 }
 
@@ -76,7 +78,9 @@ void GraphicsEngine::drawBoard()
 
 void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 {
-	SDL_Surface* toDraw;
+	SDL_Surface* toDraw = 0;
+
+	//FIXME: Add a default case to avoid dereferencing null pointers
 
 	switch(type){
 
@@ -124,13 +128,17 @@ void GraphicsEngine::loadGraphicsFiles(std::string& path){
 	//FIXME: This will not work in Windows
 	std::string delimiter = "/";
 
-	pawnSrf = loadImg (path + delimiter + pawnFile);
-	rookSrf = loadImg (path + delimiter + pawnFile);
-	knightSrf = loadImg (path + delimiter + pawnFile);
-	bishopSrf = loadImg (path + delimiter + pawnFile);
-	kingSrf = loadImg (path + delimiter + pawnFile);
-	queenSrf = loadImg (path + delimiter + pawnFile);
-	squareSrf = loadImg (path + delimiter + pawnFile);
+	//FIXME: This is only to test
+
+	std::string fullPath = path + delimiter + pawnFile;
+
+	pawnSrf = loadImg (fullPath);
+	rookSrf = loadImg (fullPath);
+	knightSrf = loadImg (fullPath);
+	bishopSrf = loadImg (fullPath);
+	kingSrf = loadImg (fullPath);
+	queenSrf = loadImg (fullPath);
+	squareSrf = loadImg (fullPath);
 
 }
 
