@@ -51,6 +51,7 @@ void Game::drawPieces()
 
 void Game::refreshScreen()
 {
+	engine->drawToScreen();
 }
 
 void Game::run() {
