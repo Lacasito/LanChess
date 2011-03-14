@@ -177,6 +177,7 @@ void GraphicsEngine::drawSquares()
 void GraphicsEngine::drawBackground()
 {
 
+	applySurface(background, screen, width/2, height/2);
 }
 
 void GraphicsEngine::drawToScreen()
