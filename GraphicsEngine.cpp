@@ -150,8 +150,6 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	queenSrf = loadImg (fullPath);*/
 	squareSrf = loadImg (fullPath);
 
-	std::cout << "All images loaded" << std::endl;
-
 	if (squareSrf == 0){
 		error = true;
 	}
