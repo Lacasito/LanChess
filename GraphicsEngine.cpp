@@ -23,6 +23,10 @@ GraphicsEngine::~GraphicsEngine(){
 
 void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, const std::string& path, short& errorCode) {
 
+	//TODO: tidy up all this
+
+	loadGraphicsFiles(path);
+
 	errorCode = 0;
 
 	if ( SDL_Init( SDL_INIT_EVERYTHING ) == -1)
@@ -112,7 +116,7 @@ void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 	applySurface(board, toDraw, x*width/8, y*height/8);
 }
 
-void GraphicsEngine::loadGraphicsFiles(std::string& path){
+void GraphicsEngine::loadGraphicsFiles(const std::string& path){
 
 	/*TODO: filenames should not be hard-coded or at least not in
 	 * this function

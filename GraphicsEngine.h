@@ -38,7 +38,7 @@ class GraphicsEngine {
 		void init(int BPP, int WIDTH, int HEIGHT, const std::string& path, short& errorCode);
 		void drawBoard();
 		void drawPiece(LCVAR_PieceType type, int x, int y);
-		void loadGraphicsFiles(std::string& path);
+		void loadGraphicsFiles(const std::string& path);
 		void drawToScreen();
 };
 

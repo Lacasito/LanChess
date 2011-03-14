@@ -79,7 +79,7 @@ void Game::run() {
 	short errorCode = 0;
 
 	//TODO: Don't hardcode these settings
-	engine->init(32, 600, 600, ".content", errorCode);
+	engine->init(32, 600, 600, ".contents", errorCode);
 	draw();
 
 	while (!gameEnd){
