@@ -2,6 +2,6 @@
 
 __Things to do for now__
 
+	+Use variables for sized, filenames, etc. DO NOT HARDCODE THEM!
 	+Finish GraphicsEngine class
-	+Integrate the engine into the game class
 	+Create the .png files for the pieces
