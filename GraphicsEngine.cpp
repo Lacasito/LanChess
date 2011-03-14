@@ -116,7 +116,7 @@ void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 	applySurface(board, toDraw, x*width/8, y*height/8);
 }
 
-void GraphicsEngine::loadGraphicsFiles(const std::string& path){
+void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 
 	/*TODO: filenames should not be hard-coded or at least not in
 	 * this function
@@ -136,13 +136,17 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path){
 
 	std::string fullPath = path + delimiter + pawnFile;
 
-	pawnSrf = loadImg (fullPath);
+	/*pawnSrf = loadImg (fullPath);
 	rookSrf = loadImg (fullPath);
 	knightSrf = loadImg (fullPath);
 	bishopSrf = loadImg (fullPath);
 	kingSrf = loadImg (fullPath);
-	queenSrf = loadImg (fullPath);
+	queenSrf = loadImg (fullPath);*/
 	squareSrf = loadImg (fullPath);
+
+	if (squareSrf == 0){
+		error = true;
+	}
 
 }
 
