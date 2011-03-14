@@ -72,13 +72,8 @@ SDL_Surface *GraphicsEngine::loadImg (const std::string& path){
 
 void GraphicsEngine::drawBoard()
 {
-	for(int i = 0; i < 8; ++i){
-
-		for(int j = 0; j < 8; ++j){
-
-				applySurface(squareSrf, screen, j*width/8, i*height/8);
-		}
-	}
+	drawBackground();
+	drawSquares();
 
 }
 
@@ -148,9 +143,9 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	bishopSrf = loadImg (fullPath);
 	kingSrf = loadImg (fullPath);
 	queenSrf = loadImg (fullPath);*/
-	squareSrf = loadImg (fullPath);
+	squareSrfW = loadImg (fullPath);
 
-	if (squareSrf == 0){
+	if (squareSrfW == 0){
 		error = true;
 	}
 
@@ -164,6 +159,22 @@ void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest, int x, in
 	offset.y = y;
 
 	SDL_BlitSurface(src, 0, dest, &offset);
+}
+
+void GraphicsEngine::drawSquares()
+{
+	for(int i = 0; i < 8; ++i){
+
+		for(int j = 0; j < 8; ++j){
+
+				applySurface(squareSrfW, screen, j*width/8, i*height/8);
+		}
+	}
+}
+
+void GraphicsEngine::drawBackground()
+{
+
 }
 
 void GraphicsEngine::drawToScreen()
