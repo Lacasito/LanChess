@@ -1,4 +1,5 @@
 #include "GraphicsEngine.h"
+#include <iostream>
 
 GraphicsEngine::GraphicsEngine (){
 
@@ -24,12 +25,6 @@ GraphicsEngine::~GraphicsEngine(){
 void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, const std::string& path, short& errorCode) {
 
 	//TODO: tidy up all this
-
-	bool fileError = false;
-	loadGraphicsFiles(path, fileError);
-
-	fileError? errorCode = 3 : true;
-
 	errorCode = 0;
 
 	if ( SDL_Init( SDL_INIT_EVERYTHING ) == -1)
@@ -38,19 +33,25 @@ void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, const std::string& pat
 
 	}else{
 		screen = SDL_SetVideoMode(WIDTH, HEIGHT, BPP, SDL_SWSURFACE);
+		width = WIDTH;
+		height = HEIGHT;
 
-		if (screen == 0){
+		if (screen== 0){
 
 			errorCode = 2;
 
 		}else{
 
 			SDL_WM_SetCaption(windowTitle.c_str(), 0);
+			bool fileError = false;
+			loadGraphicsFiles(path, fileError);
+
+			fileError? errorCode = 3 : true;
 		}
 	}
 }
 
-SDL_Surface *GraphicsEngine::loadImg (std::string& path){
+SDL_Surface *GraphicsEngine::loadImg (const std::string& path){
 
 	SDL_Surface* loadedImg = 0;
 	SDL_Surface* optimizedImg = 0;
@@ -71,13 +72,11 @@ SDL_Surface *GraphicsEngine::loadImg (std::string& path){
 
 void GraphicsEngine::drawBoard()
 {
-	//FIXME: board should be initialised before used
 	for(int i = 0; i < 8; ++i){
 
 		for(int j = 0; j < 8; ++j){
 
-				applySurface(squareSrf, board, j*width/8, i*height/8);
-
+				applySurface(squareSrf, screen, j*width/8, i*height/8);
 		}
 	}
 
@@ -86,8 +85,6 @@ void GraphicsEngine::drawBoard()
 void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 {
 	SDL_Surface* toDraw = 0;
-
-	//FIXME: Add a default case to avoid dereferencing null pointers
 
 	switch(type){
 
@@ -116,10 +113,16 @@ void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 			break;
 	}
 
-	applySurface(board, toDraw, x*width/8, y*height/8);
+	if (toDraw != 0){
+
+		applySurface(board, toDraw, x*width/8, y*height/8);
+
+	}
 }
 
 void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
+
+	//FIXME: loadImg can be null!
 
 	/*TODO: filenames should not be hard-coded or at least not in
 	 * this function
@@ -137,7 +140,7 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 
 	//FIXME: This is only to test
 
-	std::string fullPath = path + delimiter + pawnFile;
+	std::string fullPath = "square.png";
 
 	/*pawnSrf = loadImg (fullPath);
 	rookSrf = loadImg (fullPath);
@@ -146,6 +149,8 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	kingSrf = loadImg (fullPath);
 	queenSrf = loadImg (fullPath);*/
 	squareSrf = loadImg (fullPath);
+
+	std::cout << "All images loaded" << std::endl;
 
 	if (squareSrf == 0){
 		error = true;
@@ -165,7 +170,7 @@ void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest, int x, in
 
 void GraphicsEngine::drawToScreen()
 {
-	applySurface(board, screen, 0, 0);
+	//applySurface(board, screen, 0, 0);
 	SDL_Flip(screen);
 }
 
