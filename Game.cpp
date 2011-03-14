@@ -45,6 +45,7 @@ void Game::drawPieces()
 
 				engine->drawPiece(type, j, i);
 			}
+		}
 	}
 }
 
