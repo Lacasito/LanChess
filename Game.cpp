@@ -71,7 +71,7 @@ void Game::run() {
 	}
 
 	drawEverything();
-	engine->drawToScreen();
+	refreshScreen();
 
 	while (!gameEnd){
 
@@ -79,7 +79,7 @@ void Game::run() {
 		parseUserInput(move);
 
 		drawEverything();
-		engine->drawToScreen();
+		refreshScreen();
 
 		if(move == "done"){
 			gameEnd = true;
