@@ -56,6 +56,7 @@ void Game::refreshScreen()
 
 void Game::handleErrors(short  errorCode)
 {
+	//TODO: Support all types of errors
 	switch (errorCode){
 		case 3:
 		std::cout << "ERROR: File error" << std::endl;
@@ -70,7 +71,6 @@ void Game::run() {
 	short errorCode = 0;
 
 	//TODO: Don't hardcode these settings
-	//TODO: Support all types of errors
 	engine->init(16, 600, 600, ".", errorCode);
 
 	handleErrors(errorCode);
