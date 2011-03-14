@@ -143,7 +143,8 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	bishopSrf = loadImg (fullPath);
 	kingSrf = loadImg (fullPath);
 	queenSrf = loadImg (fullPath);*/
-	squareSrfW = loadImg (fullPath);
+	squareSrfW = loadImg ("square_white.png");
+	squareSrfB = loadImg ("square_black.png");
 
 	if (squareSrfW == 0){
 		error = true;
