@@ -21,7 +21,7 @@ class GraphicsEngine {
 
 		SDL_Surface *screen;
 		SDL_Surface *pawnSrf, *rookSrf, *knightSrf, *bishopSrf, *kingSrf, *queenSrf;
-		SDL_Surface *squareSrfW, *squareStfB;
+		SDL_Surface *squareSrfW, *squareSrfB;
 		SDL_Surface *board;
 		SDL_Surface *background;
 
