@@ -21,14 +21,17 @@ class GraphicsEngine {
 
 		SDL_Surface *screen;
 		SDL_Surface *pawnSrf, *rookSrf, *knightSrf, *bishopSrf, *kingSrf, *queenSrf;
-		SDL_Surface *squareSrf;
+		SDL_Surface *squareSrfW, *squareStfB;
 		SDL_Surface *board;
+		SDL_Surface *background;
 
 		//TODO: Use a #define instead?
 		std::string windowTitle;
 
-		SDL_Surface *loadImg (std::string& path);
+		SDL_Surface *loadImg (const std::string& path);
 		void applySurface(SDL_Surface *source, SDL_Surface *destination, int x, int y);
+		void drawBackground();
+		void drawSquares();
 
 	public:
 		GraphicsEngine();
