@@ -10,7 +10,7 @@ class Game {
 
 	private:
 		Board* board;
-		GraphicsEngine engine();
+		GraphicsEngine* engine;
 
 		void getUserInput(std::string& input);
 		void parseUserInput(const std::string& input);

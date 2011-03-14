@@ -8,6 +8,7 @@
 
 Game::Game() {
 
+	engine = new GraphicsEngine();
 	board = new Board(WHITE);
 
 }
@@ -20,7 +21,7 @@ Game::~Game() {
 
 void Game::draw() {
 
-	engine.drawBoard();
+	engine->drawBoard();
 
 	for(int i = 0; i < 8; ++i){
 
