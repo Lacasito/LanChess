@@ -14,6 +14,7 @@ class Game {
 
 		void getUserInput(std::string& input);
 		void parseUserInput(const std::string& input);
+		void drawPieces();
 
 	public:
 		Game();

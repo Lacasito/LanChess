@@ -71,6 +71,11 @@ void Game::drawEverything() {
 	}
 }
 
+void Game::drawPieces()
+{
+
+}
+
 void Game::run() {
 
 	std::string move;
