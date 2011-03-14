@@ -73,10 +73,7 @@ void Game::run() {
 	//TODO: Support all types of errors
 	engine->init(16, 600, 600, ".", errorCode);
 
-	switch (errorCode){
-		case 3:
-		std::cout << "ERROR: File error" << std::endl;
-	}
+	handleErrors(errorCode);
 
 	drawEverything();
 	refreshScreen();
