@@ -17,6 +17,35 @@ Game::~Game()
 	delete board;
 }
 
+void Game::run() {
+
+	std::string move;
+
+	bool gameEnd = false;
+	short errorCode = 0;
+
+	//TODO: Don't hardcode these settings
+	engine->init(16, 600, 600, ".", errorCode);
+
+	handleErrors(errorCode);
+
+	drawEverything();
+	refreshScreen();
+
+	while (!gameEnd){
+
+		getUserInput(move);
+		parseUserInput(move);
+
+		drawEverything();
+		refreshScreen();
+
+		if(move == "done"){
+			gameEnd = true;
+		}
+	}
+
+}
 void Game::drawEverything() {
 
 	drawBoard();
@@ -58,36 +87,6 @@ void Game::handleErrors(short errorCode)
 		case 3:
 		std::cout << "ERROR: File error" << std::endl;
 	}
-}
-
-void Game::run() {
-
-	std::string move;
-
-	bool gameEnd = false;
-	short errorCode = 0;
-
-	//TODO: Don't hardcode these settings
-	engine->init(16, 600, 600, ".", errorCode);
-
-	handleErrors(errorCode);
-
-	drawEverything();
-	refreshScreen();
-
-	while (!gameEnd){
-
-		getUserInput(move);
-		parseUserInput(move);
-
-		drawEverything();
-		refreshScreen();
-
-		if(move == "done"){
-			gameEnd = true;
-		}
-	}
-
 }
 
 void Game::getUserInput(std::string& input)
