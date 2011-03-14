@@ -56,6 +56,10 @@ void Game::refreshScreen()
 
 void Game::handleErrors(short  errorCode)
 {
+	switch (errorCode){
+		case 3:
+		std::cout << "ERROR: File error" << std::endl;
+	}
 }
 
 void Game::run() {
