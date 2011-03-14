@@ -16,6 +16,7 @@ class Game {
 		void parseUserInput(const std::string& input);
 		void drawPieces();
 		void drawBoard();
+		void refreshScreen();
 
 	public:
 		Game();

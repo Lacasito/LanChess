@@ -49,6 +49,10 @@ void Game::drawPieces()
 	}
 }
 
+void Game::refreshScreen()
+{
+}
+
 void Game::run() {
 
 	std::string move;
@@ -67,11 +71,12 @@ void Game::run() {
 
 	drawEverything();
 	engine->drawToScreen();
+
 	while (!gameEnd){
 
 		getUserInput(move);
 		parseUserInput(move);
-		system("clear");
+
 		drawEverything();
 		engine->drawToScreen();
 
