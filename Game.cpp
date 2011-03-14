@@ -19,7 +19,7 @@ Game::~Game() {
 
 }
 
-void Game::draw() {
+void Game::drawEverything() {
 
 	engine->drawBoard();
 
@@ -79,20 +79,22 @@ void Game::run() {
 	short errorCode = 0;
 
 	//TODO: Don't hardcode these settings
-	engine->init(32, 600, 600, ".contents", errorCode);
+	//TODO: Support all types of errors
+	engine->init(16, 600, 600, ".", errorCode);
+
 	switch (errorCode){
 		case 3:
 		std::cout << "ERROR: File error" << std::endl;
 	}
 
-	draw();
+	drawEverything();
 	engine->drawToScreen();
 	while (!gameEnd){
 
 		getUserInput(move);
 		parseUserInput(move);
 		system("clear");
-		draw();
+		drawEverything();
 		engine->drawToScreen();
 
 		if(move == "done"){

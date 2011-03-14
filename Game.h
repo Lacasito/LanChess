@@ -19,7 +19,7 @@ class Game {
 		Game();
 		~Game();
 
-		void draw();
+		void drawEverything();
 		void run();
 
 
