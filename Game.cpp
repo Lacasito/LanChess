@@ -76,7 +76,10 @@ void Game::run() {
 	std::string move;
 
 	bool gameEnd = false;
+	short errorCode = 0;
 
+	//TODO: Don't hardcode these settings
+	engine->init(32, 600, 600, ".content", errorCode);
 	draw();
 
 	while (!gameEnd){
@@ -85,6 +88,7 @@ void Game::run() {
 		parseUserInput(move);
 		system("clear");
 		draw();
+		engine->drawToScreen();
 
 		if(move == "done"){
 			gameEnd = true;
