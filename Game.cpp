@@ -86,7 +86,7 @@ void Game::run() {
 	}
 
 	draw();
-
+	engine->drawToScreen();
 	while (!gameEnd){
 
 		getUserInput(move);
