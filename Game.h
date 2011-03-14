@@ -17,6 +17,7 @@ class Game {
 		void drawPieces();
 		void drawBoard();
 		void refreshScreen();
+		void handleErrors(short errorCode);
 
 	public:
 		Game();

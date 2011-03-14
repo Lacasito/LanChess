@@ -54,6 +54,10 @@ void Game::refreshScreen()
 	engine->drawToScreen();
 }
 
+void Game::handleErrors(short  errorCode)
+{
+}
+
 void Game::run() {
 
 	std::string move;
