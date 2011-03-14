@@ -35,7 +35,7 @@ class GraphicsEngine {
 		~GraphicsEngine();
 
 		//TODO: should init be the constructor? if so, how do we know if there was an error?
-		void init(int BPP, int WIDTH, int HEIGHT, const std::string& path, bool& errorCode);
+		void init(int BPP, int WIDTH, int HEIGHT, const std::string& path, short& errorCode);
 		void drawBoard();
 		void drawPiece(LCVAR_PieceType type, int x, int y);
 		void loadGraphicsFiles(std::string& path);
