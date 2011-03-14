@@ -21,7 +21,7 @@ GraphicsEngine::~GraphicsEngine(){
 
 }
 
-void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, std::string& path, bool& errorCode) {
+void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, const std::string& path, bool& errorCode) {
 
 	errorCode = 0;
 
