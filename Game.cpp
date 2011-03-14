@@ -23,6 +23,11 @@ void Game::drawEverything() {
 
 	engine->drawBoard();
 
+	drawPieces();
+}
+
+void Game::drawPieces()
+{
 	for(int i = 0; i < 8; ++i){
 
 		for(int j = 0; j < 8; ++j){
@@ -33,47 +38,9 @@ void Game::drawEverything() {
 
 				LCVAR_PieceType type = piece->getType();
 
-				switch(type){
-
-							case PAWN:
-								std::cout << "P";
-								break;
-
-							case ROOK:
-								std::cout << "R";
-								break;
-
-							case KNIGHT:
-								std::cout << "K";
-								break;
-
-							case BISHOP:
-								std::cout << "B";
-								break;
-
-							case QUEEN:
-								std::cout << "Q";
-								break;
-
-							case KING:
-								std::cout << "*";
-								break;
-
-					}
-			}else{
-				std::cout << "_";
-
 			}
 
-		}
-		std::cout << std::endl;
-
 	}
-}
-
-void Game::drawPieces()
-{
-
 }
 
 void Game::run() {
