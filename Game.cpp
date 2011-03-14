@@ -21,9 +21,14 @@ Game::~Game() {
 
 void Game::drawEverything() {
 
-	engine->drawBoard();
+	drawBoard();
 
 	drawPieces();
+}
+
+void Game::drawBoard(){
+
+	engine->drawBoard();
 }
 
 void Game::drawPieces()
