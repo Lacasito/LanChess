@@ -43,8 +43,8 @@ void Game::drawPieces()
 
 				LCVAR_PieceType type = piece->getType();
 
+				engine->drawPiece(type, j, i);
 			}
-
 	}
 }
 
