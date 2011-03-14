@@ -145,6 +145,7 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	queenSrf = loadImg (fullPath);*/
 	squareSrfW = loadImg ("square_white.png");
 	squareSrfB = loadImg ("square_black.png");
+	background = loadImg ("back.png");
 
 	if (squareSrfW == 0){
 		error = true;
