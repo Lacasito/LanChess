@@ -80,6 +80,10 @@ void Game::run() {
 
 	//TODO: Don't hardcode these settings
 	engine->init(32, 600, 600, ".contents", errorCode);
+	switch (errorCode){
+		case 3:
+		std::cout << "ERROR: File error" << std::endl;
+	}
 	draw();
 
 	while (!gameEnd){

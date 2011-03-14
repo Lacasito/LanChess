@@ -25,7 +25,10 @@ void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, const std::string& pat
 
 	//TODO: tidy up all this
 
-	loadGraphicsFiles(path);
+	bool fileError = false;
+	loadGraphicsFiles(path, fileError);
+
+	fileError? errorCode = 3 : true;
 
 	errorCode = 0;
 
