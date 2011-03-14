@@ -165,11 +165,18 @@ void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest, int x, in
 
 void GraphicsEngine::drawSquares()
 {
+	SDL_Surface* toDraw = 0;
+
 	for(int i = 0; i < 8; ++i){
 
 		for(int j = 0; j < 8; ++j){
 
-				applySurface(squareSrfW, screen, j*width/8, i*height/8);
+			if( (i+j)%2 == 0 ){
+				toDraw = squareSrfW;
+			}else{
+				toDraw = squareSrfB;
+			}
+				applySurface(toDraw, screen, j*width/8, i*height/8);
 		}
 	}
 }
