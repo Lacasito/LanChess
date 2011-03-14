@@ -6,23 +6,20 @@
 #include <string>
 #include <cstdlib>
 
-Game::Game() {
-
+Game::Game()
+{
 	engine = new GraphicsEngine();
 	board = new Board(WHITE);
-
 }
 
-Game::~Game() {
-
+Game::~Game()
+{
 	delete board;
-
 }
 
 void Game::drawEverything() {
 
 	drawBoard();
-
 	drawPieces();
 }
 
@@ -54,7 +51,7 @@ void Game::refreshScreen()
 	engine->drawToScreen();
 }
 
-void Game::handleErrors(short  errorCode)
+void Game::handleErrors(short errorCode)
 {
 	//TODO: Support all types of errors
 	switch (errorCode){
