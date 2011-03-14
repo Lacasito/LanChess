@@ -84,6 +84,7 @@ void Game::run() {
 		case 3:
 		std::cout << "ERROR: File error" << std::endl;
 	}
+
 	draw();
 
 	while (!gameEnd){
