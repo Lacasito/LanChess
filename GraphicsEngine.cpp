@@ -121,7 +121,7 @@ void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 
 	if (toDraw != 0){
 
-		applySurface(screen, toDraw, x*width/8, y*height/8);
+		applySurface(toDraw, screen, x*width/8, y*height/8);
 	}
 }
 
