@@ -4,6 +4,17 @@
 GraphicsEngine::GraphicsEngine (){
 
 	windowTitle = "LanChess";
+	screen = 0;
+	pawnSrf = 0;
+	rookSrf = 0;
+	knightSrf = 0;
+	bishopSrf = 0;
+	kingSrf = 0;
+	queenSrf = 0;
+	squareSrfW = 0;
+	squareSrfB = 0;
+	board = 0;
+	background = 0;
 
 }
 
