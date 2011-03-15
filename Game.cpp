@@ -6,10 +6,10 @@
 #include <string>
 #include <cstdlib>
 
-Game::Game()
-{
-	engine = new GraphicsEngine();
+Game::Game(){
+//Create a board and the engine to draw it
 	board = new Board(WHITE);
+	engine = new GraphicsEngine();
 }
 
 Game::~Game()
@@ -47,18 +47,23 @@ void Game::run() {
 
 }
 void Game::drawEverything() {
+//Draw the board and then the pieces
 
 	drawBoard();
 	drawPieces();
 }
 
 void Game::drawBoard(){
+//Call the engine to draw the board
 
 	engine->drawBoard();
 }
 
-void Game::drawPieces()
-{
+void Game::drawPieces(){
+/*Check all squares in the board, get the type of piece if
+ * there's a piece and call the engine to draw it in the
+ * correct position
+ */
 	for(int i = 0; i < 8; ++i){
 
 		for(int j = 0; j < 8; ++j){
@@ -80,8 +85,9 @@ void Game::refreshScreen()
 	engine->drawToScreen();
 }
 
-void Game::handleErrors(short errorCode)
-{
+void Game::handleErrors(short errorCode){
+//This method should be able to handle all possible errors
+
 	//TODO: Support all types of errors
 	switch (errorCode){
 		case 3:
