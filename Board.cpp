@@ -11,8 +11,8 @@ Board::Board(LCVAR_Color color) {
 	addPiece(ROOK, color, 0, 7);
 	addPiece(KNIGHT, color, 1, 7);
 	addPiece(BISHOP, color, 2, 7);
-	addPiece(KING, color, 3, 7);
-	addPiece(QUEEN, color, 4, 7);
+	addPiece(QUEEN, color, 3, 7);
+	addPiece(KING, color, 4, 7);
 	addPiece(BISHOP, color, 5, 7);
 	addPiece(KNIGHT, color, 6, 7);
 	addPiece(ROOK, color, 7, 7);
