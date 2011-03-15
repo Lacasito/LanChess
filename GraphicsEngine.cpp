@@ -141,8 +141,8 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	rookSrf = loadImg (fullPath);
 	knightSrf = loadImg (fullPath);
 	bishopSrf = loadImg (fullPath);
-	kingSrf = loadImg (fullPath);
 	queenSrf = loadImg (fullPath);*/
+	kingSrf = loadImg ("king.png");
 	squareSrfW = loadImg ("square_white.png");
 	squareSrfB = loadImg ("square_black.png");
 	background = loadImg ("back.png");
