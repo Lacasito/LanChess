@@ -83,7 +83,7 @@ void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 
 	switch(type){
 
-		case PAWN:
+		/*case PAWN:
 			toDraw = pawnSrf;
 			break;
 
@@ -97,21 +97,20 @@ void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 
 		case BISHOP:
 			toDraw = bishopSrf;
-			break;
+			break;*/
 
 		case KING:
 			toDraw = kingSrf;
 			break;
 
-		case QUEEN:
+		/*case QUEEN:
 			toDraw = queenSrf;
-			break;
+			break;*/
 	}
 
 	if (toDraw != 0){
 
-		applySurface(board, toDraw, x*width/8, y*height/8);
-
+		applySurface(screen, toDraw, x*width/8, y*height/8);
 	}
 }
 
