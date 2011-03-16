@@ -147,11 +147,11 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 
 	std::string fullPath = "square.png";
 
-	/*pawnSrf = loadImg (fullPath);
-	rookSrf = loadImg (fullPath);
+	/*rookSrf = loadImg (fullPath);
 	knightSrf = loadImg (fullPath);
 	bishopSrf = loadImg (fullPath);
 	queenSrf = loadImg (fullPath);*/
+	pawnSrf = loadImg ("pawn.png");
 	kingSrf = loadImg ("king.png");
 	squareSrfW = loadImg ("square_white.png");
 	squareSrfB = loadImg ("square_black.png");
