@@ -19,6 +19,9 @@ Game::~Game()
 
 void Game::run() {
 
+	/*TODO: Should be library-independent (don't call SDL functions, instead
+	 *make an event handler*/
+
 	std::string move;
 
 	bool gameEnd = false;
