@@ -47,6 +47,8 @@ void Game::run() {
 
 		drawEverything();
 		refreshScreen();
+		//FIXME: Change this to a constant frame rate
+		usleep(5000);
 	}
 
 }
