@@ -72,6 +72,9 @@ SDL_Surface *GraphicsEngine::loadImg (const std::string& path){
 
 		optimizedImg = SDL_DisplayFormat (loadedImg);
 
+		Uint32 colorkey = SDL_MapRGB( optimizedImg->format, 0x6E, 0xFF, 0xFF );
+		SDL_SetColorKey( optimizedImg, SDL_SRCCOLORKEY, colorkey );
+
 		SDL_FreeSurface (loadedImg);
 
 	}
