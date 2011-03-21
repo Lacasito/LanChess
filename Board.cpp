@@ -222,34 +222,15 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 
 	}else if(type == PAWN) {
 
-		if (getPiece(fromX, fromY)->getColor() == playerColor){
+		bool pawnRow, sameColumn, /*toEnemy, */clearWay, tryCapture;
 
+		pawnRow = (fromY == 6);
+		sameColumn = (toX == fromX);
+		//toEnemy = (!isEmpty(toX,toY))&&(getPiece(toX,toY)->getColor() != getPiece(fromX, fromY)->getColor());
+		clearWay = ((pawnRow && (toY==(fromY + 2))) ? isEmpty(toX, 5) : (pawnRow && (toY==(fromY + 2)))) && isEmpty(toX, toY);
+		tryCapture = ((toX == fromX + 1) || (toX == fromX - 1)) && (toY == fromY - 1);
 
-			bool pawnRow, sameColumn, /*toEnemy, */clearWay, tryCapture;
-
-			pawnRow = (fromY == 6);
-			sameColumn = (toX == fromX);
-			//toEnemy = (!isEmpty(toX,toY))&&(getPiece(toX,toY)->getColor() != getPiece(fromX, fromY)->getColor());
-			clearWay = ((pawnRow && (toY==(fromY + 2))) ? isEmpty(toX, 5) : (pawnRow && (toY==(fromY + 2)))) && isEmpty(toX, toY);
-			tryCapture = ((toX == fromX + 1) || (toX == fromX - 1)) && (toY == fromY - 1);
-
-			isLegal = (sameColumn && clearWay) || (/*toEnemy && */tryCapture);
-
-
-
-		}else{
-
-			bool pawnRow, sameColumn, toEnemy, clearWay, tryCapture;
-
-			pawnRow = (fromY == 1);
-			sameColumn = (toX == fromX);
-			toEnemy = (!isEmpty(toX,toY))&&(getPiece(toX,toY)->getColor() != getPiece(fromX, fromY)->getColor());
-			clearWay = ((pawnRow && (toY == fromY - 2)) ? isEmpty(toX, 3) : true) && isEmpty(toX, toY);
-			tryCapture = ((toX == fromX + 1) || (toX == fromX - 1)) && (toY == fromY + 1);
-
-			isLegal = (sameColumn && clearWay) || (toEnemy && tryCapture);
-
-		}
+		isLegal = (sameColumn && clearWay) || (/*toEnemy && */tryCapture);
 
 	}else if (type == BISHOP) {
 
