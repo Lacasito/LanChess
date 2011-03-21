@@ -22,7 +22,7 @@ void Game::run() {
 	/*TODO: Should be library-independent (don't call SDL functions, instead
 	 *make an event handler*/
 
-	std::string move;
+	LCVAR_Event gameEvent;
 
 	bool gameEnd = false;
 	short errorCode = 0;
@@ -51,7 +51,7 @@ void Game::run() {
 
 		}
 
-		getUserInput();
+		getUserInput(gameEvent);
 	}
 
 }
@@ -104,9 +104,9 @@ void Game::handleErrors(short errorCode){
 	}
 }
 
-void Game::getUserInput(std::string& input)
+void Game::getUserInput(LCVAR_Event& event)
 {
-	std::cin >> input;
+
 }
 void Game::parseUserInput(const std::string& input)
 {
