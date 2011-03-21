@@ -204,6 +204,8 @@ void GraphicsEngine::drawToScreen()
 
 void GraphicsEngine::getEvent(LCVAR_Event& event)
 {
+	//TODO: the user can't quit if he doesn't finish making the move
+
 	SDL_Event sdlEvent;
 	SDL_Rect mousePos, squareFrom, squareTo;
 	bool eventTaken = false, validMove = false;
@@ -212,23 +214,30 @@ void GraphicsEngine::getEvent(LCVAR_Event& event)
 
 		//Looking for a click
 		if(sdlEvent.type == SDL_MOUSEBUTTONDOWN){
+			mousePos.x = sdlEvent.motion.x;
+			mousePos.y = sdlEvent.motion.y;
 			posToSquare(mousePos, squareFrom);
 
 			//We're looking for a second click on the destination square
-			while((!validMove)&&SDL_PollEvent(&sdlEvent)){
+			while(!validMove){
+					while(SDL_PollEvent(&sdlEvent)){
 
-				if(sdlEvent.type == SDL_MOUSEBUTTONDOWN){
-					posToSquare(mousePos, squareTo);
+							if(sdlEvent.type == SDL_MOUSEBUTTONDOWN){
 
-					event.type = MOVE;
-					event.fx = squareFrom.x;
-					event.fy = squareFrom.y;
-					event.tx = squareTo.x;
-					event.ty = squareTo.y;
+									mousePos.x = sdlEvent.motion.x;
+									mousePos.y = sdlEvent.motion.y;
+									posToSquare(mousePos, squareTo);
 
-					eventTaken = true;
-					validMove = true;
-				}
+									event.type = MOVE;
+									event.fx = squareFrom.x;
+									event.fy = squareFrom.y;
+									event.tx = squareTo.x;
+									event.ty = squareTo.y;
+
+									eventTaken = true;
+									validMove = true;
+							}
+					}
 			}
 		}
 
@@ -240,8 +249,8 @@ void GraphicsEngine::getEvent(LCVAR_Event& event)
 }
 
 void GraphicsEngine::posToSquare(SDL_Rect& pos, SDL_Rect& square){
-	square.x = pos.x/width/8;
-	square.y = pos.y/height/8;
+	square.x = pos.x/(width/8);
+	square.y = pos.y/(height/8);
 }
 
 
