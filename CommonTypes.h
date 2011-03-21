@@ -5,7 +5,7 @@
 
 enum LCVAR_PieceType { KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN };
 enum LCVAR_Color { BLACK, WHITE };
-enum LCVAR_EventType { MOVE, QUIT };
+enum LCVAR_EventType { MOVE, QUIT, NOTHING };
 
 typedef struct {
 

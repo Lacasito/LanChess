@@ -20,6 +20,7 @@ Game::~Game()
 void Game::run() {
 
 	LCVAR_Event gameEvent;
+	gameEvent.type = NOTHING;
 
 	bool gameEnd = false;
 	short errorCode = 0;
@@ -40,7 +41,7 @@ void Game::run() {
 
 			gameEnd = true;
 
-		}else{
+		}else if (gameEvent.type == MOVE){
 			parseUserInput(gameEvent);
 		}
 
