@@ -51,7 +51,7 @@ void Game::run() {
 
 		}
 
-		getUserInput(gameEvent);
+		getMove(gameEvent);
 	}
 
 }
@@ -104,7 +104,7 @@ void Game::handleErrors(short errorCode){
 	}
 }
 
-void Game::getUserInput(LCVAR_Event& event)
+void Game::getMove(LCVAR_Event& event)
 {
 
 }
