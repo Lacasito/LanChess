@@ -10,7 +10,7 @@ enum LCVAR_EventType { MOVE, QUIT };
 typedef struct {
 
 	LCVAR_EventType type;
-	std::string meta;
+	int fx, fy, tx, ty;
 
 } LCVAR_Event;
 
