@@ -43,6 +43,7 @@ class GraphicsEngine {
 		void drawPiece(LCVAR_PieceType type, int x, int y);
 		void loadGraphicsFiles(const std::string& path, bool& error);
 		void drawToScreen();
+		void getEvent(LCVAR_Event& event);
 };
 
 

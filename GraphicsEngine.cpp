@@ -202,5 +202,12 @@ void GraphicsEngine::drawToScreen()
 	SDL_Flip(screen);
 }
 
+void GraphicsEngine::getEvent(LCVAR_Event& event)
+{
+
+}
+
+
+
 
 
