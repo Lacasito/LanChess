@@ -222,15 +222,17 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 
 	}else if(type == PAWN) {
 
+		//TODO: This is very ugly! rewrite the clearWay variable logic
+
 		bool pawnRow, sameColumn, /*toEnemy, */clearWay, tryCapture;
 
 		pawnRow = (fromY == 6);
 		sameColumn = (toX == fromX);
-		//toEnemy = (!isEmpty(toX,toY))&&(getPiece(toX,toY)->getColor() != getPiece(fromX, fromY)->getColor());
-		clearWay = ((pawnRow && (toY==(fromY + 2))) ? isEmpty(toX, 5) : (pawnRow && (toY==(fromY + 2)))) && isEmpty(toX, toY);
+		clearWay = ((pawnRow && isEmpty(toX, fromY - 1)) && (isEmpty(toX,toY))) || ((!pawnRow && isEmpty(toX,toY))
+				&& (abs(toY - fromY) < 2)&&(fromY > toY));
 		tryCapture = ((toX == fromX + 1) || (toX == fromX - 1)) && (toY == fromY - 1);
 
-		isLegal = (sameColumn && clearWay) || (/*toEnemy && */tryCapture);
+		isLegal = (sameColumn && clearWay) || (tryCapture);
 
 	}else if (type == BISHOP) {
 
