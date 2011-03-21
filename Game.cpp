@@ -41,7 +41,7 @@ void Game::run() {
 			gameEnd = true;
 
 		}else{
-			//parseUserInput(gameEvent);
+			parseUserInput(gameEvent);
 		}
 
 		drawEverything();
