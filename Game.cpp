@@ -106,6 +106,7 @@ void Game::handleErrors(short errorCode){
 
 void Game::getMove(LCVAR_Event& event)
 {
+	engine->getEvent(event);
 
 }
 void Game::parseUserInput(const std::string& input)
