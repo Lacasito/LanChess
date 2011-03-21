@@ -1,5 +1,4 @@
 #include "GraphicsEngine.h"
-#include <iostream>
 
 GraphicsEngine::GraphicsEngine (){
 
