@@ -230,7 +230,7 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 			pawnRow = (fromY == 6);
 			sameColumn = (toX == fromX);
 			//toEnemy = (!isEmpty(toX,toY))&&(getPiece(toX,toY)->getColor() != getPiece(fromX, fromY)->getColor());
-			clearWay = ((pawnRow && (toY==fromY + 2)) ? isEmpty(toX, 5) : true) && isEmpty(toX, toY);
+			clearWay = ((pawnRow && (toY==(fromY + 2))) ? isEmpty(toX, 5) : (pawnRow && (toY==(fromY + 2)))) && isEmpty(toX, toY);
 			tryCapture = ((toX == fromX + 1) || (toX == fromX - 1)) && (toY == fromY - 1);
 
 			isLegal = (sameColumn && clearWay) || (/*toEnemy && */tryCapture);
