@@ -197,6 +197,14 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 {
 	bool isLegal = false;
 
+	/*TODO: Check if there's ambiguity within the isLegal variables and the final isLegal.
+	 * Maybe it's better to check if the target square is occupied at the very end of this
+	 * function or even outside it. Probably make two functions: isLegalMove and isValidMove
+	 * the former checks whether it is possible to make the move regardless of the board,
+	 * the latter takes into account board conditions such as occupied target squares,
+	 * pinned pieces, king in check, suicide etc.
+	 */
+
 	//the piece at [fromX][fromY] must exist!
 	LCVAR_PieceType type = getPiece(fromX, fromY)->getType();
 
@@ -215,14 +223,6 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 	}else if(type == PAWN) {
 
 		if (getPiece(fromX, fromY)->getColor() == playerColor){
-
-			/*TODO: Check if there's ambiguity within the isLegal variables and the final isLegal.
-			 * Maybe it's better to check if the target square is occupied at the very end of this
-			 * function or even outside it. Probably make two functions: isLegalMove and isValidMove
-			 * the former checks whether it is possible to make the move regardless of the board,
-			 * the latter takes into account board conditions such as occupied target squares,
-			 * pinned pieces, king in check, suicide etc.
-			 */
 
 
 			bool pawnRow, sameColumn, /*toEnemy, */clearWay, tryCapture;
