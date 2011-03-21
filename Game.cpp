@@ -19,15 +19,10 @@ Game::~Game()
 
 void Game::run() {
 
-	/*TODO: Should be library-independent (don't call SDL functions, instead
-	 *make an event handler*/
-
 	LCVAR_Event gameEvent;
 
 	bool gameEnd = false;
 	short errorCode = 0;
-
-	SDL_Event event;
 
 	//TODO: Don't hardcode these settings
 	engine->init(16, 600, 600, ".", errorCode);
@@ -39,16 +34,15 @@ void Game::run() {
 
 	while (!gameEnd){
 
-		while (SDL_PollEvent(&event)){
-
-			if (event.type == SDL_QUIT){
-				gameEnd = true;
-			}
-
-		}
-
 		getEvent(gameEvent);
-		//parseUserInput(move);
+
+		if(gameEvent.type == QUIT){
+
+			gameEnd = true;
+
+		}else{
+			//parseUserInput(gameEvent);
+		}
 
 		drawEverything();
 		refreshScreen();
