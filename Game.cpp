@@ -47,7 +47,7 @@ void Game::run() {
 
 		}
 
-		getMove(gameEvent);
+		getEvent(gameEvent);
 		//parseUserInput(move);
 
 		drawEverything();
@@ -104,7 +104,7 @@ void Game::handleErrors(short errorCode){
 	}
 }
 
-void Game::getMove(LCVAR_Event& event)
+void Game::getEvent(LCVAR_Event& event)
 {
 	engine->getEvent(event);
 

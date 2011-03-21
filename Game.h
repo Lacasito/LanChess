@@ -12,7 +12,7 @@ class Game {
 		Board* board;
 		GraphicsEngine* engine;
 
-		void getMove(LCVAR_Event& event);
+		void getEvent(LCVAR_Event& event);
 		void parseUserInput(const std::string& input);
 		void drawPieces();
 		void drawBoard();
