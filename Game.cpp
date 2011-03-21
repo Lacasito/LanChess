@@ -38,8 +38,6 @@ void Game::run() {
 	refreshScreen();
 
 	while (!gameEnd){
-
-		//getUserInput(move);
 		//parseUserInput(move);
 
 		drawEverything();
@@ -53,9 +51,7 @@ void Game::run() {
 
 		}
 
-		if(move == "done"){
-			gameEnd = true;
-		}
+		getUserInput();
 	}
 
 }
