@@ -24,6 +24,8 @@ void Game::run() {
 	bool gameEnd = false;
 	short errorCode = 0;
 
+	SDL_Event event;
+
 	//TODO: Don't hardcode these settings
 	engine->init(16, 600, 600, ".", errorCode);
 
@@ -34,11 +36,19 @@ void Game::run() {
 
 	while (!gameEnd){
 
-		getUserInput(move);
-		parseUserInput(move);
+		//getUserInput(move);
+		//parseUserInput(move);
 
 		drawEverything();
 		refreshScreen();
+
+		while (SDL_PollEvent(&event)){
+
+			if (event.type == SDL_QUIT){
+				gameEnd = true;
+			}
+
+		}
 
 		if(move == "done"){
 			gameEnd = true;
