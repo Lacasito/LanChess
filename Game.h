@@ -13,7 +13,7 @@ class Game {
 		GraphicsEngine* engine;
 
 		void getEvent(LCVAR_Event& event);
-		void parseUserInput(const std::string& input);
+		void parseUserInput(LCVAR_Event& event);
 		void drawPieces();
 		void drawBoard();
 		void refreshScreen();

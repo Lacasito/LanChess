@@ -103,14 +103,14 @@ void Game::getEvent(LCVAR_Event& event)
 	engine->getEvent(event);
 
 }
-void Game::parseUserInput(const std::string& input)
+void Game::parseUserInput(LCVAR_Event& event)
 {
-	if (input != "done"){
+	if (event.type != QUIT){
 
-		int fromX = int (input[0]) - 48;
-		int fromY = int (input[1]) - 48;
-		int toX = int (input[2]) - 48;
-		int toY = int (input[3]) - 48;
+		int fromX = event.fx;
+		int fromY = event.fy;
+		int toX = event.tx;
+		int toY = event.ty;
 
 		board->movePiece(fromX, fromY, toX, toY);
 	}
