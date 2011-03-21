@@ -32,6 +32,7 @@ class GraphicsEngine {
 		void applySurface(SDL_Surface *source, SDL_Surface *destination, int x, int y);
 		void drawBackground();
 		void drawSquares();
+		void posToSquare(SDL_Rect& pos, SDL_Rect& square);
 
 	public:
 		GraphicsEngine();
