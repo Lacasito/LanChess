@@ -221,8 +221,10 @@ void GraphicsEngine::getEvent(LCVAR_Event& event)
 					posToSquare(mousePos, squareTo);
 
 					event.type = MOVE;
-					event.meta = squareFrom.x + " " + squareFrom.y + " " +
-							squareTo.x + " " + squareTo.y;
+					event.fx = squareFrom.x;
+					event.fy = squareFrom.y;
+					event.tx = squareTo.x;
+					event.ty = squareTo.y;
 
 					eventTaken = true;
 				}
