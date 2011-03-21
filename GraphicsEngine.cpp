@@ -204,20 +204,20 @@ void GraphicsEngine::drawToScreen()
 
 void GraphicsEngine::getEvent(LCVAR_Event& event)
 {
-	SDL_Event* sdlEvent;
+	SDL_Event sdlEvent;
 	SDL_Rect mousePos, squareFrom, squareTo;
 	bool eventTaken = false, validMove = false;
 
-	while((!eventTaken)&&(SDL_PollEvent(sdlEvent))){
+	while((!eventTaken)&&(SDL_PollEvent(&sdlEvent))){
 
 		//Looking for a click
-		if(sdlEvent->type == SDL_MOUSEBUTTONDOWN){
+		if(sdlEvent.type == SDL_MOUSEBUTTONDOWN){
 			posToSquare(mousePos, squareFrom);
 
 			//We're looking for a second click on the destination square
-			while(SDL_PollEvent(sdlEvent)){
+			while(SDL_PollEvent(&sdlEvent)){
 
-				if(sdlEvent->type == SDL_MOUSEBUTTONDOWN){
+				if(sdlEvent.type == SDL_MOUSEBUTTONDOWN){
 					posToSquare(mousePos, squareTo);
 
 					event.type = MOVE;
@@ -229,6 +229,11 @@ void GraphicsEngine::getEvent(LCVAR_Event& event)
 					eventTaken = true;
 				}
 			}
+		}
+
+		if(sdlEvent.type == SDL_QUIT){
+			event.type = QUIT;
+			eventTaken = true;
 		}
 	}
 }
