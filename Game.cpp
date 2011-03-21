@@ -38,10 +38,6 @@ void Game::run() {
 	refreshScreen();
 
 	while (!gameEnd){
-		//parseUserInput(move);
-
-		drawEverything();
-		refreshScreen();
 
 		while (SDL_PollEvent(&event)){
 
@@ -52,6 +48,10 @@ void Game::run() {
 		}
 
 		getMove(gameEvent);
+		//parseUserInput(move);
+
+		drawEverything();
+		refreshScreen();
 	}
 
 }
