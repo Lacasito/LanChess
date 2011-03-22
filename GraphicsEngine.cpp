@@ -252,7 +252,3 @@ void GraphicsEngine::posToSquare(SDL_Rect& pos, SDL_Rect& square){
 	square.x = pos.x/(width/8);
 	square.y = pos.y/(height/8);
 }
-
-
-
-
