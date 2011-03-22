@@ -19,14 +19,21 @@ Game::~Game()
 
 void Game::run() {
 
+	/*TODO:The timer should be an object, Game::run should not call
+	 * sdl functions directly
+	 */
+
+
 	LCVAR_Event gameEvent;
 	gameEvent.type = NOTHING;
+	int startTicks = 0;
 
 	bool gameEnd = false;
 	short errorCode = 0;
 
 	//TODO: Don't hardcode these settings
 	engine->init(24, 600, 600, ".", errorCode);
+	startTicks = SDL_GetTicks();
 
 	handleErrors(errorCode);
 
@@ -47,8 +54,12 @@ void Game::run() {
 
 		drawEverything();
 		refreshScreen();
-		//FIXME: Change this to a constant frame rate
-		usleep(5000);
+
+		if ((SDL_GetTicks() - startTicks) < (1000 / 30)){
+
+			SDL_Delay( (1000/30) - (SDL_GetTicks() - startTicks));
+		}
+
 	}
 
 }
