@@ -23,7 +23,7 @@ using namespace std;
 configLoader::configLoader(const string& path){
 	//TODO: Do not hardcode this
 
-	configFile = path + "config.cfg";
+	configFile = path + "/config.cfg";
 }
 
 configLoader::~configLoader(){
