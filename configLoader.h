@@ -28,7 +28,7 @@ private:
 	string pawnFile, rookFile, knightFile, bishopFile, kingFile, queenFile;
 
 public:
-	configLoader(string& fileName);
+	configLoader(string& path);
 	~configLoader();
 	void loadData();
 	void getPawnFile(string& filename);

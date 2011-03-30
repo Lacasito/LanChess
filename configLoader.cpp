@@ -20,8 +20,10 @@
 
 using namespace std;
 
-configLoader::configLoader(string& fileName){
-	configFile = fileName;
+configLoader::configLoader(string& path){
+	//TODO: Do not hardcode this
+
+	configFile = path + "config.cfg";
 }
 
 configLoader::~configLoader(){
