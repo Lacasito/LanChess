@@ -29,7 +29,7 @@ private:
 
 public:
 	//TODO: Implement getSquares() and getBackground()
-	configLoader(string& path);
+	configLoader(const string& path);
 	~configLoader();
 	void loadData();
 	void getPawnFile(string& filename);
