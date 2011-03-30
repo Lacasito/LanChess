@@ -18,7 +18,6 @@
 #ifndef CONFIG_LOADER_H
 #define CONFIG_LOADER_H
 
-#include <iostream>
 #include <string>
 using namespace std;
 
