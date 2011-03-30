@@ -16,6 +16,7 @@
 */
 
 #include "GraphicsEngine.h"
+#include "configLoader.h"
 
 GraphicsEngine::GraphicsEngine (){
 
@@ -142,33 +143,32 @@ void GraphicsEngine::drawPiece(LCVAR_PieceType type, int x, int y)
 }
 
 void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
-
 	//FIXME: loadImg can be null!
 
-	/*TODO: filenames should not be hard-coded or at least not in
-	 * this function
-	 */
-	std::string pawnFile = "pawn.png";
-	std::string rookFile = "rook.png";
-	std::string knightFile = "knight.png";
-	std::string bishopFile = "bishop.png";
-	std::string kingFile = "king.png";
-	std::string queenFile = "queen.png";
-	std::string squareFile = "square.png";
+	configLoader config(path);
+	std::string fileName;
 
-	//FIXME: This will not work in Windows
-	std::string delimiter = "/";
+	config.loadData();
 
-	//FIXME: This is only to test
+	config.getPawnFile(fileName);
+	pawnSrf = loadImg (fileName);
 
-	std::string fullPath = "square.png";
+	config.getPawnFile(fileName);
+	rookSrf = loadImg (fileName);
 
-	rookSrf = loadImg ("rook.png");
-	knightSrf = loadImg ("knight.png");
-	bishopSrf = loadImg ("bishop.png");
-	queenSrf = loadImg ("queen.png");
-	pawnSrf = loadImg ("pawn.png");
-	kingSrf = loadImg ("king.png");
+	config.getPawnFile(fileName);
+	knightSrf = loadImg (fileName);
+
+	config.getPawnFile(fileName);
+	bishopSrf = loadImg (fileName);
+
+	config.getPawnFile(fileName);
+	queenSrf = loadImg (fileName);
+
+	config.getPawnFile(fileName);
+	kingSrf = loadImg (fileName);
+
+
 	squareSrfW = loadImg ("square_white.png");
 	squareSrfB = loadImg ("square_black.png");
 	background = loadImg ("back.png");
