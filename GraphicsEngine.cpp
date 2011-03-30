@@ -153,19 +153,19 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	config.getPawnFile(fileName);
 	pawnSrf = loadImg (fileName);
 
-	config.getPawnFile(fileName);
+	config.getRookFile(fileName);
 	rookSrf = loadImg (fileName);
 
-	config.getPawnFile(fileName);
+	config.getKnightFile(fileName);
 	knightSrf = loadImg (fileName);
 
-	config.getPawnFile(fileName);
+	config.getBishopFile(fileName);
 	bishopSrf = loadImg (fileName);
 
-	config.getPawnFile(fileName);
+	config.getQueenFile(fileName);
 	queenSrf = loadImg (fileName);
 
-	config.getPawnFile(fileName);
+	config.getKingFile(fileName);
 	kingSrf = loadImg (fileName);
 
 
