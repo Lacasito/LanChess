@@ -58,6 +58,8 @@ void configLoader::loadData(){
 		queenFile = input[5];
 
 		delete [] input;
+
+		fileStream.close();
 	}
 
 
