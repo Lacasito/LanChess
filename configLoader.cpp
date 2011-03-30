@@ -1,8 +1,10 @@
 #include "configLoader.h"
-#include <iostream>
+#include <fstream>
+
+using namespace std;
 
 configLoader::configLoader(string& fileName){
-	configFile = filename;
+	configFile = fileName;
 }
 
 configLoader::~configLoader(){
@@ -10,6 +12,33 @@ configLoader::~configLoader(){
 }
 
 void configLoader::loadData(){
+
+	ifstream fileStream;
+	string buffer;
+	string* input;
+	int counter = 0;
+
+	fileStream.open(configFile.c_str(), ifstream::in);
+	if (!fileStream.bad()){
+
+		getline(fileStream, buffer);
+		input = new string[6];
+
+		while(!fileStream.fail()){
+			input[counter++] = buffer;
+			getline(fileStream, buffer);
+		}
+
+		pawnFile = input[0];
+		rookFile = input[1];
+		knightFile = input[2];
+		bishopFile = input[3];
+		kingFile = input[4];
+		queenFile = input[5];
+
+		delete [] input;
+	}
+
 
 }
 
