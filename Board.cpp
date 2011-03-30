@@ -249,9 +249,14 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 
 		pawnRow = (fromY == 6);
 		sameColumn = (toX == fromX);
-		clearWay = ((pawnRow && isEmpty(toX, fromY - 1)) && (isEmpty(toX,toY))) || ((!pawnRow && isEmpty(toX,toY))
-				&& (abs(toY - fromY) < 2)&&(fromY > toY));
 		tryCapture = ((toX == fromX + 1) || (toX == fromX - 1)) && (toY == fromY - 1);
+
+		if(pawnRow){
+			clearWay = abs(toY - fromY) <= 2 && toY < fromY && isEmpty(toX,toY);
+		}
+		else{
+			clearWay = abs(toY - fromY) == 1 && toY < fromY && isEmpty(toX,toY);
+		}
 
 		isLegal = (sameColumn && clearWay) || (tryCapture);
 
