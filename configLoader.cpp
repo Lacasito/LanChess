@@ -13,6 +13,8 @@ configLoader::~configLoader(){
 
 void configLoader::loadData(){
 
+	//TODO: Make more robust
+
 	ifstream fileStream;
 	string buffer;
 	string* input;
