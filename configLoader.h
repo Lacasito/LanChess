@@ -28,6 +28,7 @@ private:
 	string pawnFile, rookFile, knightFile, bishopFile, kingFile, queenFile;
 
 public:
+	//TODO: Implement getSquares() and getBackground()
 	configLoader(string& path);
 	~configLoader();
 	void loadData();
