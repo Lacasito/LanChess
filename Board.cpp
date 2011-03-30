@@ -225,12 +225,11 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 	//the piece at [fromX][fromY] must exist!
 	LCVAR_PieceType type = getPiece(fromX, fromY)->getType();
 
-	// ...
-	
-	while(false){
-	}
+	if(toX == fromX && toY == fromY){
 
-	if (type == KNIGHT){
+			isLegal = false;
+
+	}else if (type == KNIGHT){
 
 		isLegal = ((toX == fromX -1)&&(toY == fromY - 2)) ||
 				((toX == fromX - 2)&&(toY == fromY - 1)) ||
