@@ -1,4 +1,5 @@
 #include "configLoader.h"
+#include <iostream>
 
 configLoader::configLoader(string& fileName){
 	configFile = filename;
@@ -9,7 +10,7 @@ configLoader::~configLoader(){
 }
 
 void configLoader::loadData(){
-//TODO: Implement
+
 }
 
 void configLoader::getPawnFile(string& filename){
