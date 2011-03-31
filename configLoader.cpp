@@ -43,7 +43,7 @@ void configLoader::loadData(){
 	if (!fileStream.bad()){
 
 		getline(fileStream, buffer);
-		input = new string[6];
+		input = new string[9];
 
 		while(!fileStream.fail()){
 			input[counter++] = buffer;
@@ -56,6 +56,9 @@ void configLoader::loadData(){
 		bishopFile = input[3];
 		kingFile = input[4];
 		queenFile = input[5];
+		blackSquareFile = input[6];
+		whiteSquareFile = input[7];
+		backgroundFile = input[8];
 
 		delete [] input;
 
@@ -87,4 +90,14 @@ void configLoader::getKingFile(string& filename){
 
 void configLoader::getQueenFile(string& filename){
 	filename = queenFile;
+}
+
+void configLoader::getBSquareFile(string& filename){
+	filename = blackSquareFile;
+}
+void configLoader::getWSquareFile(string& filename){
+	filename = whiteSquareFile;
+}
+void configLoader::getBackgroundFile(string& filename){
+	filename = backgroundFile;
 }

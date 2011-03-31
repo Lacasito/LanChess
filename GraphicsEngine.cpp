@@ -168,10 +168,14 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	config.getKingFile(fileName);
 	kingSrf = loadImg (fileName);
 
+	config.getWSquareFile(fileName);
+	squareSrfW = loadImg(fileName);
 
-	squareSrfW = loadImg ("images/square_white.png");
-	squareSrfB = loadImg ("images/square_black.png");
-	background = loadImg ("images/back.png");
+	config.getBSquareFile(fileName);
+	squareSrfB = loadImg (fileName);
+
+	config.getBackgroundFile(fileName);
+	background = loadImg (fileName);
 
 	if (squareSrfW == 0){
 		error = true;

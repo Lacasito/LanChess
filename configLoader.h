@@ -26,6 +26,7 @@ class configLoader{
 private:
 	string configFile;
 	string pawnFile, rookFile, knightFile, bishopFile, kingFile, queenFile;
+	string blackSquareFile, whiteSquareFile, backgroundFile;
 
 public:
 	//TODO: Implement getSquares() and getBackground()
@@ -38,6 +39,9 @@ public:
 	void getBishopFile(string& filename);
 	void getKingFile(string& filename);
 	void getQueenFile(string& filename);
+	void getBSquareFile(string& filename);
+	void getWSquareFile(string& filename);
+	void getBackgroundFile(string& filename);
 
 };
 
