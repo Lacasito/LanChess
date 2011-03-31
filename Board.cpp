@@ -257,6 +257,8 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 			}
 			else if(abs(toY - fromY) == 2){
 				clearWay = toY < fromY && isEmpty(toX,toY) && isEmpty(toX,toY + 1);
+			}else{
+				clearWay = false;
 			}
 		}
 		else{
