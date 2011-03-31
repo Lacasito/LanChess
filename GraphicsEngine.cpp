@@ -169,9 +169,9 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	kingSrf = loadImg (fileName);
 
 
-	squareSrfW = loadImg ("square_white.png");
-	squareSrfB = loadImg ("square_black.png");
-	background = loadImg ("back.png");
+	squareSrfW = loadImg ("images/square_white.png");
+	squareSrfB = loadImg ("images/square_black.png");
+	background = loadImg ("images/back.png");
 
 	if (squareSrfW == 0){
 		error = true;
