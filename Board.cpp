@@ -23,7 +23,7 @@ Board::Board(LCVAR_Color color) {
 	
 	//TODO:if the game is in LAN, DO NOT check legal moves for other players?
 
-	LCVAR_Color playerColor = color;
+	LCVAR_Color enemyColor = (color == WHITE) ? BLACK : WHITE;
 
 	addPiece(ROOK, color, 0, 7);
 	addPiece(KNIGHT, color, 1, 7);
@@ -35,7 +35,20 @@ Board::Board(LCVAR_Color color) {
 	addPiece(ROOK, color, 7, 7);
 	
 	for (int i = 0; i < 8; ++i ) {
-		addPiece(PAWN, playerColor, i, 6);
+		addPiece(PAWN, color, i, 6);
+	}
+
+	addPiece(ROOK, enemyColor, 0, 0);
+	addPiece(KNIGHT, enemyColor, 1, 0);
+	addPiece(BISHOP, enemyColor, 2, 0);
+	addPiece(QUEEN, enemyColor, 3, 0);
+	addPiece(KING, enemyColor, 4, 0);
+	addPiece(BISHOP, enemyColor, 5, 0);
+	addPiece(KNIGHT, enemyColor, 6, 0);
+	addPiece(ROOK, enemyColor, 7, 0);
+
+	for (int i = 0; i < 8; ++i ) {
+		addPiece(PAWN, enemyColor, i, 1);
 	}
 
 	int step = 2;
