@@ -21,7 +21,7 @@
 
 Board::Board(LCVAR_Color color) {
 	
-	//TODO:if the game is in LAN, DO NOT check legal moves for other players
+	//TODO:if the game is in LAN, DO NOT check legal moves for other players?
 
 	LCVAR_Color playerColor = color;
 
