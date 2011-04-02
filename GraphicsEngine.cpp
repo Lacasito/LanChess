@@ -186,10 +186,6 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	config.getBackgroundFile(fileName);
 	background = loadImg (fileName);
 
-	if (squareSrfW == 0){
-		error = true;
-	}
-
 }
 
 void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest, int x, int y){
