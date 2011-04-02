@@ -192,6 +192,15 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	config.getBackgroundFile(fileName);
 	background = loadImg (fileName);
 
+	//TODO: Check if the files were loaded correctly at this point!
+
+	makeWhite(pawnSrf);
+	makeWhite(rookSrf);
+	makeWhite(knightSrf);
+	makeWhite(bishopSrf);
+	makeWhite(kingSrf);
+	makeWhite(queenSrf);
+
 }
 
 void GraphicsEngine::applySurface(SDL_Surface *src, SDL_Surface *dest, int x, int y){
