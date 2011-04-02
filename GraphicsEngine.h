@@ -44,6 +44,7 @@ class GraphicsEngine {
 		void drawBackground();
 		void drawSquares();
 		void posToSquare(SDL_Rect& pos, SDL_Rect& square);
+		void makeWhite(SDL_Surface* source);
 
 	public:
 		GraphicsEngine();
