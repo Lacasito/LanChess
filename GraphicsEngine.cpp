@@ -296,5 +296,11 @@ void GraphicsEngine::posToSquare(SDL_Rect& pos, SDL_Rect& square){
 
 void GraphicsEngine::makeWhite(SDL_Surface* source){
 
+	SDL_LockSurface(source);
+
+	//TODO: Implement this function
+
+	SDL_UnlockSurface(source);
+
 }
 
