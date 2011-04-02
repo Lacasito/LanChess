@@ -160,21 +160,27 @@ void GraphicsEngine::loadGraphicsFiles(const std::string& path, bool& error){
 	config.loadData();
 
 	config.getPawnFile(fileName);
+	pawnSrf_b = loadImg (fileName);
 	pawnSrf = loadImg (fileName);
 
 	config.getRookFile(fileName);
+	rookSrf_b = loadImg (fileName);
 	rookSrf = loadImg (fileName);
 
 	config.getKnightFile(fileName);
+	knightSrf_b = loadImg (fileName);
 	knightSrf = loadImg (fileName);
 
 	config.getBishopFile(fileName);
+	bishopSrf_b = loadImg (fileName);
 	bishopSrf = loadImg (fileName);
 
 	config.getQueenFile(fileName);
+	queenSrf_b = loadImg (fileName);
 	queenSrf = loadImg (fileName);
 
 	config.getKingFile(fileName);
+	kingSrf_b = loadImg (fileName);
 	kingSrf = loadImg (fileName);
 
 	config.getWSquareFile(fileName);
