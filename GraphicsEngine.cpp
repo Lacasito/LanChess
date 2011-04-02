@@ -22,12 +22,21 @@ GraphicsEngine::GraphicsEngine (){
 
 	windowTitle = "LanChess";
 	screen = 0;
+
 	pawnSrf = 0;
 	rookSrf = 0;
 	knightSrf = 0;
 	bishopSrf = 0;
 	kingSrf = 0;
 	queenSrf = 0;
+
+	pawnSrf_b = 0;
+	rookSrf_b = 0;
+	knightSrf_b = 0;
+	bishopSrf_b = 0;
+	kingSrf_b = 0;
+	queenSrf_b = 0;
+
 	squareSrfW = 0;
 	squareSrfB = 0;
 	board = 0;
