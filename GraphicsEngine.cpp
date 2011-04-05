@@ -278,6 +278,9 @@ void GraphicsEngine::getEvent(LCVAR_Event& event)
 									eventTaken = true;
 									validMove = true;
 							}
+
+							//TODO: DIRTY! remove!! this is only to reduce cpu load
+							usleep(2000);
 					}
 			}
 		}
