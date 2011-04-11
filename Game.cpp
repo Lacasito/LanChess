@@ -32,6 +32,8 @@ Game::Game(char** argv){
 		}
 	}
 
+	//TODO:Initialize 'turn' here
+
 	board = new Board(color);
 	engine = new GraphicsEngine();
 }
