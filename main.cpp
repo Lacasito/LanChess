@@ -19,6 +19,6 @@
 
 int main(int argc, char** argv)
 {
-	Game* lanchess = new Game();
+	Game* lanchess = new Game(argv);
 	lanchess->run();
 }

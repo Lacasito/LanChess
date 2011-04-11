@@ -23,8 +23,15 @@
 #include <cstdlib>
 
 Game::Game(char** argv){
-//Create a board and the engine to draw it
-	//TODO: dont hardcode color
+	//Create a board and the engine to draw it
+	LCVAR_Color color = WHITE;
+
+	if (argv != 0){
+		if(*argv[1] == 'b'){
+			color = BLACK;
+		}
+	}
+
 	board = new Board(color);
 	engine = new GraphicsEngine();
 }
@@ -133,8 +140,7 @@ void Game::handleErrors(short errorCode){
 
 void Game::getEvent(LCVAR_Event& event)
 {
-	if (turn == )
-	engine->getEvent(event, turn);
+	engine->getEvent(event);
 
 }
 void Game::parseUserInput(LCVAR_Event& event)
