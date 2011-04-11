@@ -17,7 +17,7 @@
 
 #include "Game.h"
 
-int main()
+int main(int argc, char** argv)
 {
 	Game* lanchess = new Game();
 	lanchess->run();

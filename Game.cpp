@@ -22,10 +22,10 @@
 #include <string>
 #include <cstdlib>
 
-Game::Game(){
+Game::Game(char** argv){
 //Create a board and the engine to draw it
 	//TODO: dont hardcode color
-	board = new Board(WHITE);
+	board = new Board(color);
 	engine = new GraphicsEngine();
 }
 

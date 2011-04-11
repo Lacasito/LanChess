@@ -37,7 +37,7 @@ class Game {
 		void handleErrors(short errorCode);
 
 	public:
-		Game();
+		Game(char** argv);
 		~Game();
 
 		void drawEverything();
