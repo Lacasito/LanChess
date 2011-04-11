@@ -24,6 +24,7 @@
 
 Game::Game(){
 //Create a board and the engine to draw it
+	//TODO: dont hardcode color
 	board = new Board(WHITE);
 	engine = new GraphicsEngine();
 }
@@ -39,11 +40,11 @@ void Game::run() {
 	 * sdl functions directly
 	 */
 
-
 	LCVAR_Event gameEvent;
 	gameEvent.type = NOTHING;
 	int startTicks = 0;
 
+	//TODO: Clean this up, do not hardcode
 	turn = WHITE;
 
 	bool gameEnd = false;
@@ -132,7 +133,8 @@ void Game::handleErrors(short errorCode){
 
 void Game::getEvent(LCVAR_Event& event)
 {
-	engine->getEvent(event);
+	if (turn == )
+	engine->getEvent(event, turn);
 
 }
 void Game::parseUserInput(LCVAR_Event& event)
