@@ -27,6 +27,7 @@ class Game {
 	private:
 		Board* board;
 		GraphicsEngine* engine;
+		LCVAR_Color turn;
 
 		void getEvent(LCVAR_Event& event);
 		void parseUserInput(LCVAR_Event& event);

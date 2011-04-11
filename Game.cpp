@@ -44,6 +44,8 @@ void Game::run() {
 	gameEvent.type = NOTHING;
 	int startTicks = 0;
 
+	turn = WHITE;
+
 	bool gameEnd = false;
 	short errorCode = 0;
 
