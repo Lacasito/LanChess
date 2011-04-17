@@ -166,9 +166,6 @@ void Game::parseUserInput(LCVAR_Event& event)
 {
 	if (event.type != QUIT){
 
-		/*for(int i = 0; i < 4; ++i){std::cout << event.param[i] <<  " ";}
-		std::cout << std::endl;*/
-
 		int fromX = atoi (event.param[0].c_str());
 		int fromY = atoi (event.param[1].c_str());
 		int toX = atoi (event.param[2].c_str());
