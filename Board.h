@@ -56,7 +56,7 @@ class Board {
 		void 	movePiece(int fromX, int fromY, int toX, int toY);
 		LCVAR_Color getSquareColor(int x, int y) const;
 		bool	isEmpty(int x, int y) const;
-
+		bool	isEmpty(const std::string& x, const std::string& y) const;
 };
 
 #endif 

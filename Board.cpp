@@ -314,9 +314,14 @@ LCVAR_Color Board::getSquareColor(int x, int y) const
 }
 
 void Board::intToString(int in, std::string& out){
-	std::strigstream ss;
+	std::stringstream ss;
 	ss << in;
 	out = ss.str();
+}
+
+bool Board::isEmpty(const std::string& x, const std::string& y) const
+{
+	return isEmpty(atoi(x.c_str()), atoi(y.c_str()));
 }
 
 
