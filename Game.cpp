@@ -60,7 +60,7 @@ void Game::run() {
 	short errorCode = 0;
 
 	//TODO: Don't hardcode these settings
-	engine->init(24, 600, 600, ".", errorCode);
+	engine->init(32, 600, 600, ".", errorCode);
 	startTicks = SDL_GetTicks();
 
 	handleErrors(errorCode);
