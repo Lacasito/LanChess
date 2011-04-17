@@ -35,6 +35,7 @@ class Game {
 		void drawBoard();
 		void refreshScreen();
 		void handleErrors(short errorCode);
+		void intToString(int in, std::string& out);
 
 	public:
 		Game(char** argv);

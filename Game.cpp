@@ -141,6 +141,7 @@ void Game::getEvent(LCVAR_Event& event)
 {
 	LCVAR_Event dummyEvent;
 	dummyEvent.type = NOTHING;
+	int x, y;
 
 	engine->getEvent(event);
 
@@ -175,4 +176,10 @@ void Game::parseUserInput(LCVAR_Event& event)
 
 		board->movePiece(fromX, fromY, toX, toY);
 	}
+}
+
+void Game::intToString(int in, std::string& out){
+	std::strigstream ss;
+	ss << in;
+	out = ss.str();
 }
