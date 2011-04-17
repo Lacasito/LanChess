@@ -16,9 +16,21 @@
 */
 
 #include "Game.h"
+#include <iostream>
 
 int main(int argc, char** argv)
 {
-	Game* lanchess = new Game(argv);
+	Game* lanchess = 0;
+
+	if (argc < 1){
+
+		std::cout << "You must provide arguments!, type \"./lanchess w\" or \"./lanchess b\"" << std::endl;
+
+	}else{
+
+		lanchess = new Game(argv);
+
+	}
+
 	lanchess->run();
 }
