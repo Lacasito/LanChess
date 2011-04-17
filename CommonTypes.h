@@ -20,14 +20,16 @@
 
 #include "string"
 
+const int PARAMSIZE = 10;
+
 enum LCVAR_PieceType { KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN };
 enum LCVAR_Color { BLACK, WHITE };
-enum LCVAR_EventType { MOVE, QUIT, NOTHING };
+enum LCVAR_EventType { SELECT, MOVE, QUIT, NOTHING };
 
 typedef struct {
 
 	LCVAR_EventType type;
-	int fx, fy, tx, ty;
+	std::string param[PARAMSIZE];
 
 } LCVAR_Event;
 

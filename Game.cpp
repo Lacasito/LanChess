@@ -149,10 +149,10 @@ void Game::parseUserInput(LCVAR_Event& event)
 {
 	if (event.type != QUIT){
 
-		int fromX = event.fx;
-		int fromY = event.fy;
-		int toX = event.tx;
-		int toY = event.ty;
+		int fromX = atoi (event.param[0].c_str());
+		int fromY = atoi (event.param[1].c_str());
+		int toX = atoi (event.param[2].c_str());
+		int toY = atoi (event.param[3].c_str());
 
 		board->movePiece(fromX, fromY, toX, toY);
 	}
