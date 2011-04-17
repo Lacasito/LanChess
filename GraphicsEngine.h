@@ -45,6 +45,7 @@ class GraphicsEngine {
 		void drawSquares();
 		void posToSquare(SDL_Rect& pos, SDL_Rect& square);
 		void makeWhite(SDL_Surface* source);
+		void intToString(int in, std::string& out);
 
 	public:
 		GraphicsEngine();

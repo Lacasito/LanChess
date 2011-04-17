@@ -83,10 +83,7 @@ void Game::run() {
 		drawEverything();
 		refreshScreen();
 
-		if ((SDL_GetTicks() - startTicks) < (1000 / 30)){
-
-			SDL_Delay( (1000/30) - (SDL_GetTicks() - startTicks));
-		}
+		gameEvent.type = NOTHING;
 
 	}
 
@@ -142,12 +139,34 @@ void Game::handleErrors(short errorCode){
 
 void Game::getEvent(LCVAR_Event& event)
 {
+	LCVAR_Event dummyEvent;
+	dummyEvent.type = NOTHING;
+
 	engine->getEvent(event);
+
+	if (event.type == PIECE_SELECT){
+
+		engine->getEvent(dummyEvent);
+
+		if (dummyEvent.type == PIECE_SELECT){
+			event.param[2] = dummyEvent.param[0];
+			event.param[3] = dummyEvent.param[1];
+
+			event.type = MOVE;
+
+		}else if (dummyEvent.type == QUIT){
+			event.type = QUIT;
+		}
+
+	}
 
 }
 void Game::parseUserInput(LCVAR_Event& event)
 {
 	if (event.type != QUIT){
+
+		/*for(int i = 0; i < 4; ++i){std::cout << event.param[i] <<  " ";}
+		std::cout << std::endl;*/
 
 		int fromX = atoi (event.param[0].c_str());
 		int fromY = atoi (event.param[1].c_str());

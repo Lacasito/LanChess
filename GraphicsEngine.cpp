@@ -17,6 +17,8 @@
 
 #include "GraphicsEngine.h"
 #include "configLoader.h"
+#include <iostream>
+#include <sstream>
 
 GraphicsEngine::GraphicsEngine (){
 
@@ -248,45 +250,30 @@ void GraphicsEngine::getEvent(LCVAR_Event& event)
 	//TODO: the user can't quit if he doesn't finish making the move
 
 	SDL_Event sdlEvent;
-	SDL_Rect mousePos, squareFrom, squareTo;
-	bool eventTaken = false, validMove = false;
+	SDL_Rect mousePos, squareFrom;
+	bool eventTaken = false;
 
-	while((!eventTaken)&&(SDL_PollEvent(&sdlEvent))){
+	while(!eventTaken){
+
+		SDL_WaitEvent(&sdlEvent);
+
+		if(sdlEvent.type == SDL_QUIT){
+			event.type = QUIT;
+			eventTaken = true;
+		}
 
 		//Looking for a click
 		if(sdlEvent.type == SDL_MOUSEBUTTONDOWN){
+
+			event.type = PIECE_SELECT;
+
 			mousePos.x = sdlEvent.motion.x;
 			mousePos.y = sdlEvent.motion.y;
 			posToSquare(mousePos, squareFrom);
 
-			//We're looking for a second click on the destination square
-			while(!validMove){
-					while(SDL_PollEvent(&sdlEvent)){
+			intToString(squareFrom.x, event.param[0]);
+			intToString(squareFrom.y, event.param[1]);
 
-							if(sdlEvent.type == SDL_MOUSEBUTTONDOWN){
-
-									mousePos.x = sdlEvent.motion.x;
-									mousePos.y = sdlEvent.motion.y;
-									posToSquare(mousePos, squareTo);
-
-									event.type = MOVE;
-									event.param[0] = squareFrom.x;
-									event.param[1] = squareFrom.y;
-									event.param[2] = squareTo.x;
-									event.param[3] = squareTo.y;
-
-									eventTaken = true;
-									validMove = true;
-							}
-
-							//TODO: DIRTY! remove!! this is only to reduce cpu load
-							usleep(2000);
-					}
-			}
-		}
-
-		if(sdlEvent.type == SDL_QUIT){
-			event.type = QUIT;
 			eventTaken = true;
 		}
 	}
@@ -305,5 +292,13 @@ void GraphicsEngine::makeWhite(SDL_Surface* source){
 
 	SDL_UnlockSurface(source);
 
+}
+
+void GraphicsEngine::intToString(int in, std::string& out){
+
+	std::stringstream ss;
+
+	ss << in;
+	out = ss.str();
 }
 
