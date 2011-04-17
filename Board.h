@@ -35,7 +35,6 @@ class Board {
 		LCVAR_Color playerColor;
 
 		bool	legalMove (int fromX, int fromY, int toX, int toY) const;
-		bool	isEmpty(int x, int y) const;
 
 		bool 	isDiagonal(int fromX, int fromY, int toX, int toY) const;
 
@@ -43,6 +42,7 @@ class Board {
 		bool	isClearDiagonal(int fromX, int fromY, int toX, int toY) const;
 		bool	isClearRow(int fromX, int fromY, int toX, int toY) const;
 		bool	isClearColumn(int fromX, int fromY, int toX, int toY) const;
+
 
 	public:
 		Board (LCVAR_Color color);
@@ -54,6 +54,7 @@ class Board {
 		void	addPiece(Piece*& piece, int x, int y);
 		void 	movePiece(int fromX, int fromY, int toX, int toY);
 		LCVAR_Color getSquareColor(int x, int y) const;
+		bool	isEmpty(int x, int y) const;
 
 };
 
