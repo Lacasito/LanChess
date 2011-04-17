@@ -141,11 +141,10 @@ void Game::getEvent(LCVAR_Event& event)
 {
 	LCVAR_Event dummyEvent;
 	dummyEvent.type = NOTHING;
-	int x, y;
 
 	engine->getEvent(event);
 
-	if (event.type == PIECE_SELECT){
+	if ((event.type == PIECE_SELECT)&&(!board->isEmpty(event.param[0], event.param[1]))){
 
 		engine->getEvent(dummyEvent);
 
@@ -159,6 +158,8 @@ void Game::getEvent(LCVAR_Event& event)
 			event.type = QUIT;
 		}
 
+	}else if(event.type == PIECE_SELECT){ //Means we clicked over an empty square
+		event.type = NOTHING;
 	}
 
 }
