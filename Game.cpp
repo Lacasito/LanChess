@@ -158,7 +158,7 @@ void Game::getEvent(LCVAR_Event& event)
 			event.type = QUIT;
 		}
 
-	}else if(event.type == PIECE_SELECT){ //Means we clicked over an empty square
+	}else if(event.type == PIECE_SELECT){ //Means we clicked over an empty square.
 		event.type = NOTHING;
 	}
 
