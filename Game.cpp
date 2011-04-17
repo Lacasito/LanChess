@@ -174,9 +174,3 @@ void Game::parseUserInput(LCVAR_Event& event)
 		board->movePiece(fromX, fromY, toX, toY);
 	}
 }
-
-void Game::intToString(int in, std::string& out){
-	std::strigstream ss;
-	ss << in;
-	out = ss.str();
-}

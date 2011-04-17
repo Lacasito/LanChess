@@ -313,4 +313,10 @@ LCVAR_Color Board::getSquareColor(int x, int y) const
 	return boardSquares[x][y].color;
 }
 
+void Board::intToString(int in, std::string& out){
+	std::strigstream ss;
+	ss << in;
+	out = ss.str();
+}
+
 

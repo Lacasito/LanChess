@@ -20,6 +20,7 @@
 
 #include "CommonTypes.h"
 #include "Piece.h"
+#include <sstream>
 
 struct square {
 	
@@ -42,7 +43,7 @@ class Board {
 		bool	isClearDiagonal(int fromX, int fromY, int toX, int toY) const;
 		bool	isClearRow(int fromX, int fromY, int toX, int toY) const;
 		bool	isClearColumn(int fromX, int fromY, int toX, int toY) const;
-
+		void	intToString(int in, std::string& out);
 
 	public:
 		Board (LCVAR_Color color);
