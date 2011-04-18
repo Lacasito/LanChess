@@ -132,7 +132,11 @@ void Game::handleErrors(short errorCode){
 	//TODO: Support all types of errors
 	switch (errorCode){
 		case 3:
-		std::cout << "ERROR: File error" << std::endl;
+			std::cout << "ERROR: File error" << std::endl;
+		break;
+
+		default:
+			std::cout << "ERROR: Unknown error" << std::endl;
 	}
 }
 
