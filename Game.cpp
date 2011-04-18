@@ -164,7 +164,8 @@ void Game::getEvent(LCVAR_Event& event)
 
 }
 void Game::parseUserInput(LCVAR_Event& event)
-{
+{//Process user input
+
 	if (event.type != QUIT){
 
 		int fromX = atoi (event.param[0].c_str());
