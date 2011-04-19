@@ -307,7 +307,19 @@ void GraphicsEngine::intToString(int in, std::string& out){
 
 bool GraphicsEngine::connectTo(const string& ip){
 
-	return false;
+	bool res = false;
+
+	//TODO:Change the port number
+	SDLNet_ResolveHost(&localIp, ip.c_str(), 55555);
+
+	socketDescriptor = SDLNet_TCP_Open(&localIp);
+	utils.report("Connected");
+
+	SDLNet_TCP_Close(socketDescriptor);
+
+	SDLNet_Quit();
+
+	return true;
 }
 
 bool GraphicsEngine::hostGame(){
