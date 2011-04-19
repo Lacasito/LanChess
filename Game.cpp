@@ -24,11 +24,13 @@
 
 Game::Game(char** argv){
 	//Create a board and the engine to draw it
-	LCVAR_Color color = WHITE;
+	LCVAR_Color color;
 
 	if (argv != 0){
 		if(*argv[1] == 'b'){
 			color = BLACK;
+		}else{
+			color = WHITE;
 		}
 		if (*argv[2] == 's'){
 			netMode = SERVER;
