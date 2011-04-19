@@ -204,7 +204,6 @@ void Game::resetEvent(LCVAR_Event& event)
 
 bool Game::establishConnection(const std::string& ip)
 {
-
 	bool res = false;
 	
 	if(netMode == SERVER){
