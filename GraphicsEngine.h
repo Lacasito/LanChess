@@ -27,6 +27,7 @@
 
 
 class GraphicsEngine {
+	//TODO:Use less variables (ie. Use method variables where possible)
 
 	private:
 		int bpp, height, width;
