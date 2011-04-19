@@ -55,8 +55,7 @@ void Game::run() {
 
 	handleErrors(errorCode);
 
-	drawEverything();
-	refreshScreen();
+	drawToScreen();
 
 	while (!gameEnd){
 
@@ -70,8 +69,7 @@ void Game::run() {
 			parseUserInput(gameEvent);
 		}
 
-		drawEverything();
-		refreshScreen();
+		drawToScreen();
 
 		gameEvent.type = NOTHING;
 
@@ -169,4 +167,11 @@ void Game::parseUserInput(LCVAR_Event& event)
 
 		board->movePiece(fromX, fromY, toX, toY);
 	}
+}
+
+void Game::drawToScreen(){
+
+	drawEverything();
+	refreshScreen();
+
 }

@@ -35,6 +35,7 @@ class Game {
 		void drawBoard();
 		void refreshScreen();
 		void handleErrors(short errorCode);
+		void drawToScreen();
 
 	public:
 		Game(char** argv);
