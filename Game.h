@@ -28,6 +28,7 @@ class Game {
 		Board* board;
 		GraphicsEngine* engine;
 		LCVAR_Color turn;
+		LCVAR_NetMode netMode;
 
 		void getEvent(LCVAR_Event& event);
 		void parseUserInput(LCVAR_Event& event);

@@ -30,6 +30,12 @@ Game::Game(char** argv){
 		if(*argv[1] == 'b'){
 			color = BLACK;
 		}
+		if (*argv[2] == 's'){
+			netMode = SERVER;
+		}else{
+			netMode = CLIENT;
+		}
+
 	}
 
 	board = new Board(color);
@@ -193,7 +199,14 @@ void Game::resetEvent(LCVAR_Event& event)
 	event.type = NOTHING;
 }
 
-bool Game::establishConnection(const std::string& ip){
+bool Game::establishConnection(const std::string& ip)
+{
 
-	return engine->connectTo(ip);
+	bool res = false;
+
+	if(netMode == SERVER){
+		engine->hostGame();
+	}else{
+		engine->connectTo(ip);
+	}
 }
