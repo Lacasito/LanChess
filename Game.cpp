@@ -32,8 +32,6 @@ Game::Game(char** argv){
 		}
 	}
 
-	//TODO:Initialize 'turn' here
-
 	board = new Board(color);
 	engine = new GraphicsEngine();
 }
@@ -45,16 +43,9 @@ Game::~Game()
 
 void Game::run() {
 
-	/*TODO:The timer should be an object, Game::run should not call
-	 * sdl functions directly
-	 */
-
 	LCVAR_Event gameEvent;
 	gameEvent.type = NOTHING;
 	int startTicks = 0;
-
-	//TODO: Clean this up, do not hardcode
-	turn = WHITE;
 
 	bool gameEnd = false;
 	short errorCode = 0;
