@@ -32,7 +32,7 @@ Game::Game(char** argv){
 		}
 		if (*argv[2] == 's'){
 			netMode = SERVER;
-		}else{
+		}else if (*argv[2] == 'c'){
 			netMode = CLIENT;
 		}
 
