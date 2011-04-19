@@ -34,6 +34,7 @@ class SwissKnife
 		SwissKnife();
 		~SwissKnife();
 		void report(const std::string& input);
+		void report(int input);
 };
 
 #endif

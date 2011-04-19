@@ -24,3 +24,6 @@ SwissKnife::~SwissKnife(){}
 void SwissKnife::report(const std::string& input){
 	std::cout << input;
 }
+void SwissKnife::report(int input){
+	std::cout << input;
+}
