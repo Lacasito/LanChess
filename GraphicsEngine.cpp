@@ -69,6 +69,9 @@ void GraphicsEngine::init(int BPP, int WIDTH, int HEIGHT, const std::string& pat
 	if ( SDL_Init( SDL_INIT_EVERYTHING ) == -1)
 	{
 		errorCode = 1;
+		if(SDLNet_Init() < 0){
+			errorCode = 5;
+		}
 
 	}else{
 		screen = SDL_SetVideoMode(WIDTH, HEIGHT, BPP, SDL_SWSURFACE);
