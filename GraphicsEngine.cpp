@@ -327,7 +327,7 @@ bool GraphicsEngine::hostGame(){
 	bool res = false;
 
 	//TODO:Change the port number
-	SDLNet_ResolveHost(&localIp, NULL, 55555);
+	SDLNet_ResolveHost(&localIp, 0, 55555);
 	utils.report(localIp.host);
 	utils.report(" on port ");
 	utils.report(localIp.port);
