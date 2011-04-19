@@ -333,7 +333,7 @@ bool GraphicsEngine::hostGame(){
 			if(socketDescriptor == 0){
 				utils.report("ERROR WAITING FOR CONNECTION\n");
 			}else{
-
+				utils.report("CONNECTION ESTABLISHED\n");
 				remoteIp = SDLNet_TCP_GetPeerAddress(socketDescriptor);
 			}
 
