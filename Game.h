@@ -36,6 +36,7 @@ class Game {
 		void refreshScreen();
 		void handleErrors(short errorCode);
 		void drawToScreen();
+		void resetEvent(LCVAR_Event& event);
 
 	public:
 		Game(char** argv);

@@ -71,7 +71,7 @@ void Game::run() {
 
 		drawToScreen();
 
-		gameEvent.type = NOTHING;
+		resetEvent(gameEvent);
 
 	}
 
@@ -174,4 +174,11 @@ void Game::drawToScreen(){
 	drawEverything();
 	refreshScreen();
 
+}
+
+void Game::resetEvent(LCVAR_Event& event){
+	//Resets the state of the event for it to be usable for the next iteration
+	//of the main loop.
+
+	event.type = NOTHING;
 }
