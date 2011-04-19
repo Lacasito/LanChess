@@ -325,6 +325,7 @@ bool GraphicsEngine::connectTo(const string& ip){
 bool GraphicsEngine::hostGame(){
 
 	bool res = false;
+	bool quit = false;
 
 	//TODO:Change the port number
 	if (SDLNet_ResolveHost(&localIp, 0, 9999) < 0){
@@ -338,15 +339,17 @@ bool GraphicsEngine::hostGame(){
 		if (!(socketDescriptor = SDLNet_TCP_Open(&localIp))){
 			utils.report("ERROR BINDING");
 		}else{
-			if (!(serverSocket = SDLNet_TCP_Accept(socketDescriptor))){
-				utils.report("ERROR ACCEPTING");
-			}else{
+			while(!quit){
+				if (!(serverSocket = SDLNet_TCP_Accept(socketDescriptor))){
+					utils.report("ERROR ACCEPTING");
+				}else{
 
-				remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
-				utils.report("Connected to: ");
-				utils.report(remoteIp->host);
+					remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
+					utils.report("Connected to: ");
+					utils.report(remoteIp->host);
 
-				SDLNet_TCP_Close(serverSocket);
+					SDLNet_TCP_Close(serverSocket);
+				}
 			}
 
 			SDLNet_TCP_Close(socketDescriptor);
