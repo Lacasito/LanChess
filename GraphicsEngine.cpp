@@ -356,9 +356,31 @@ TCPsocket GraphicsEngine::TCP_Wait_Accept_Wrapper(TCPsocket in){
 }
 
 void GraphicsEngine::getForeignEvent(LCVAR_Event& event){
-	SDLNet_TCP_Recv(socketDescriptor, &event, sizeof(event));
+	int buffer[4];
+
+	SDLNet_TCP_Recv(socketDescriptor, &buffer[0], sizeof(int));
+	SDLNet_TCP_Recv(socketDescriptor, &buffer[1], sizeof(int));
+	SDLNet_TCP_Recv(socketDescriptor, &buffer[2], sizeof(int));
+	SDLNet_TCP_Recv(socketDescriptor, &buffer[3], sizeof(int));
+
+	for (int i = 0; i < 4; ++i){
+		intToString(buffer[i], event.param[i]);
+	}
+
+	event.type = MOVE;
 }
 
 void GraphicsEngine::sendEvent(const LCVAR_Event& event){
-	SDLNet_TCP_Send(socketDescriptor, &event, sizeof(event));
+
+	int buff;
+
+	buff = atoi(event.param[0].c_str());
+	SDLNet_TCP_Send(socketDescriptor, &buff, sizeof(int));
+	buff = atoi(event.param[1].c_str());
+	SDLNet_TCP_Send(socketDescriptor, &buff, sizeof(int));
+	buff = atoi(event.param[2].c_str());
+	SDLNet_TCP_Send(socketDescriptor, &buff, sizeof(int));
+	buff = atoi(event.param[3].c_str());
+	SDLNet_TCP_Send(socketDescriptor, &buff, sizeof(int));
+
 }
