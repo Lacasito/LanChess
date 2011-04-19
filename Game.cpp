@@ -141,8 +141,13 @@ void Game::handleErrors(short errorCode)
 			std::cout << "ERROR: Network init error" << std::endl;
 		break;
 
+		case 2:
+			std::cout << "ERROR: Screen error" << std::endl;
+
 		default:
-			std::cout << "ERROR: Unknown error" << std::endl;
+			if (errorCode > 0){
+				std::cout << "ERROR: Unknown error" << std::endl;
+			}
 	}
 }
 
