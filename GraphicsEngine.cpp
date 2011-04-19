@@ -323,6 +323,7 @@ bool GraphicsEngine::connectTo(const string& ip){
 }
 
 bool GraphicsEngine::hostGame(){
+	//TODO:Clean this up, make functions!
 
 	bool res = false;
 	bool quit = false;
