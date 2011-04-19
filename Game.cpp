@@ -70,7 +70,18 @@ void Game::run()
 
 	while (!gameEnd){
 
-		getEvent(gameEvent);
+		if (netMode != LOCAL){
+			if(turn == board->playerColor){
+				getEvent(gameEvent);
+				if (gameEvent.type == MOVE){
+					engine->sendEvent(gameEvent);
+				}
+			}else{
+				engine->getForeignEvent(gameEvent);
+			}
+		}else{
+				getEvent(gameEvent);
+		}
 
 		if(gameEvent.type == QUIT){
 
