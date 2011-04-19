@@ -63,6 +63,9 @@ void Game::run()
 
 	drawToScreen();
 
+	//TODO:Move this function to a more suitable place
+	establishConnection("localhost");
+
 	while (!gameEnd){
 
 		getEvent(gameEvent);
