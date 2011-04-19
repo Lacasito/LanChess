@@ -24,6 +24,7 @@ Board::Board(LCVAR_Color color) {
 	//TODO:if the game is in LAN, DO NOT check legal moves for other players?
 
 	LCVAR_Color enemyColor = (color == WHITE) ? BLACK : WHITE;
+	playerColor = color;
 
 	addPiece(ROOK, color, 0, 7);
 	addPiece(KNIGHT, color, 1, 7);
