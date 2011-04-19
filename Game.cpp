@@ -128,6 +128,10 @@ void Game::handleErrors(short errorCode)
 			std::cout << "ERROR: File error" << std::endl;
 		break;
 
+		case 5:
+			std::cout << "ERROR: Network init error" << std::endl;
+		break;
+
 		default:
 			std::cout << "ERROR: Unknown error" << std::endl;
 	}
