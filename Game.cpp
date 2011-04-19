@@ -55,6 +55,8 @@ void Game::run()
 	LCVAR_Event gameEvent;
 	gameEvent.type = NOTHING;
 
+	turn = WHITE;
+
 	bool gameEnd = false;
 	short errorCode = 0;
 
@@ -94,6 +96,8 @@ void Game::run()
 		drawToScreen();
 
 		resetEvent(gameEvent);
+
+		(turn == WHITE)? turn = BLACK: turn = WHITE;
 
 	}
 
