@@ -354,3 +354,11 @@ TCPsocket GraphicsEngine::TCP_Wait_Accept_Wrapper(TCPsocket in){
 
 	return res;
 }
+
+void GraphicsEngine::getForeignEvent(LCVAR_Event& event){
+	SDLNet_TCP_Recv(socketDescriptor, &event, sizeof(event));
+}
+
+void GraphicsEngine::sendForeignEvent(const LCVAR_Event& event){
+	SDLNet_TCP_Send(socketDescriptor, &event, sizeof(event));
+}

@@ -69,6 +69,8 @@ class GraphicsEngine {
 		void getEvent(LCVAR_Event& event);
 		bool connectTo(const std::string& ip);
 		bool hostGame();
+		void getForeignEvent(LCVAR_Event& event);
+		void sendForeignEvent(const LCVAR_Event& event);
 };
 
 
