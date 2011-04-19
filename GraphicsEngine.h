@@ -38,7 +38,7 @@ class GraphicsEngine {
 		SDL_Surface *board;
 		SDL_Surface *background;
 
-		TCPsocket serverSocket, clientSocket;
+		TCPsocket socketDescriptor, serverSocket, clientSocket;
 		IPaddress localIp, *remoteIp;
 
 		SwissKnife utils;
