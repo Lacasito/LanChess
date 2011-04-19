@@ -309,3 +309,8 @@ bool GraphicsEngine::connectTo(const string& ip){
 
 	return false;
 }
+
+bool GraphicsEngine::hostGame(){
+
+	return false;
+}
