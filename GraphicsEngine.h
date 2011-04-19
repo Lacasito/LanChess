@@ -22,6 +22,7 @@
 #include "SDL/SDL_image.h"
 #include <string>
 #include "CommonTypes.h"
+#include "SDL/SDL_net.h"
 
 
 class GraphicsEngine {
@@ -35,6 +36,9 @@ class GraphicsEngine {
 		SDL_Surface *squareSrfW, *squareSrfB;
 		SDL_Surface *board;
 		SDL_Surface *background;
+
+		TCPsocket serverSocket, clientSocket;
+		IPaddress localIp, *remoteIp;
 
 		//TODO: Use a #define instead?
 		std::string windowTitle;
