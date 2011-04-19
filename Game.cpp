@@ -45,7 +45,6 @@ void Game::run() {
 
 	LCVAR_Event gameEvent;
 	gameEvent.type = NOTHING;
-	int startTicks = 0;
 
 	bool gameEnd = false;
 	short errorCode = 0;
