@@ -203,12 +203,10 @@ bool Game::establishConnection(const std::string& ip)
 {
 
 	bool res = false;
-
+	
 	if(netMode == SERVER){
-		res = engine->hostGame();
+		engine->hostGame();
 	}else{
-		res = engine->connectTo(ip);
+		engine->connectTo(ip);
 	}
-
-	return res;
 }
