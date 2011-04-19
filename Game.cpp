@@ -41,7 +41,8 @@ Game::~Game()
 	delete board;
 }
 
-void Game::run() {
+void Game::run()
+{
 
 	LCVAR_Event gameEvent;
 	gameEvent.type = NOTHING;
@@ -75,20 +76,23 @@ void Game::run() {
 	}
 
 }
-void Game::drawEverything() {
+void Game::drawEverything()
+{
 //Draw the board and then the pieces
 
 	drawBoard();
 	drawPieces();
 }
 
-void Game::drawBoard(){
+void Game::drawBoard()
+{
 //Call the engine to draw the board
 
 	engine->drawBoard();
 }
 
-void Game::drawPieces(){
+void Game::drawPieces()
+{
 /*Check all squares in the board, get the type of piece if
  * there's a piece and call the engine to draw it in the
  * correct position
@@ -114,7 +118,8 @@ void Game::refreshScreen()
 	engine->drawToScreen();
 }
 
-void Game::handleErrors(short errorCode){
+void Game::handleErrors(short errorCode)
+{
 //This method should be able to handle all possible errors
 
 	//TODO: Support all types of errors
@@ -168,14 +173,16 @@ void Game::parseUserInput(LCVAR_Event& event)
 	}
 }
 
-void Game::drawToScreen(){
+void Game::drawToScreen()
+{
 
 	drawEverything();
 	refreshScreen();
 
 }
 
-void Game::resetEvent(LCVAR_Event& event){
+void Game::resetEvent(LCVAR_Event& event)
+{
 	//Resets the state of the event for it to be usable for the next iteration
 	//of the main loop.
 
