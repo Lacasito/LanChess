@@ -25,7 +25,7 @@ const int PARAMSIZE = 10;
 enum LCVAR_PieceType { KING, QUEEN, ROOK, BISHOP, KNIGHT, PAWN };
 enum LCVAR_Color { BLACK, WHITE };
 enum LCVAR_EventType { PIECE_SELECT, MOVE, QUIT, NOTHING };
-enum LCVAR_NetMode { SERVER, CLIENT };
+enum LCVAR_NetMode { SERVER, CLIENT, LOCAL };
 
 typedef struct {
 
