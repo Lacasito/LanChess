@@ -65,9 +65,9 @@ void Game::run()
 
 			gameEnd = true;
 
-		}else if (gameEvent.type == MOVE){
-			parseUserInput(gameEvent);
 		}
+
+		parseUserInput(gameEvent);
 
 		drawToScreen();
 
@@ -162,7 +162,7 @@ void Game::getEvent(LCVAR_Event& event)
 void Game::parseUserInput(LCVAR_Event& event)
 {//Process user input
 
-	if (event.type != QUIT){
+	if (event.type == MOVE){
 
 		int fromX = atoi (event.param[0].c_str());
 		int fromY = atoi (event.param[1].c_str());
