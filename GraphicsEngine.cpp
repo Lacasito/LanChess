@@ -312,5 +312,26 @@ bool GraphicsEngine::connectTo(const string& ip){
 
 bool GraphicsEngine::hostGame(){
 
-	return false;
+	bool res = false;
+
+	//TODO:Change the port number
+	SDLNet_ResolveHost(&localIp, NULL, 55555);
+	utils.report(localIp.host);
+	utils.report(" on port ");
+	utils.report(localIp.port);
+	utils.report('\n');
+
+	socketDescriptor = SDLNet_TCP_Open(&localIp);
+	serverSocket = SDLNet_TCP_Accept(socketDescriptor);
+
+	remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
+	utils.report("Connected to: ");
+	utils.report(remoteIp->host);
+
+	SDLNet_TCP_Close(serverSocket);
+	SDLNet_TCP_Close(socketDescriptor);
+
+	SDLNet_Quit();
+
+	return true;
 }
