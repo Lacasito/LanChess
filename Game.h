@@ -30,6 +30,8 @@ class Game {
 		LCVAR_Color turn;
 		LCVAR_NetMode netMode;
 
+		SwissKnife utils;
+
 		void getEvent(LCVAR_Event& event);
 		void parseUserInput(LCVAR_Event& event);
 		void drawPieces();
