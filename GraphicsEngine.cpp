@@ -310,7 +310,7 @@ bool GraphicsEngine::connectTo(const string& ip){
 	bool res = false;
 
 	//TODO:Change the port number
-	SDLNet_ResolveHost(&localIp, ip.c_str(), 55555);
+	SDLNet_ResolveHost(&localIp, ip.c_str(), 9999);
 
 	socketDescriptor = SDLNet_TCP_Open(&localIp);
 	utils.report("Connected");
@@ -327,21 +327,31 @@ bool GraphicsEngine::hostGame(){
 	bool res = false;
 
 	//TODO:Change the port number
-	SDLNet_ResolveHost(&localIp, 0, 55555);
-	utils.report(localIp.host);
-	utils.report(" on port ");
-	utils.report(localIp.port);
-	utils.report('\n');
+	if (SDLNet_ResolveHost(&localIp, 0, 9999) < 0){
+		utils.report("ERROR RESOLVING HOST");
+	}else{
+		utils.report(localIp.host);
+		utils.report(" on port ");
+		utils.report(localIp.port);
+		utils.report('\n');
 
-	socketDescriptor = SDLNet_TCP_Open(&localIp);
-	serverSocket = SDLNet_TCP_Accept(socketDescriptor);
+		if (!(socketDescriptor = SDLNet_TCP_Open(&localIp))){
+			utils.report("ERROR BINDING");
+		}else{
+			if (!(serverSocket = SDLNet_TCP_Accept(socketDescriptor))){
+				utils.report("ERROR ACCEPTING");
+			}else{
 
-	remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
-	utils.report("Connected to: ");
-	utils.report(remoteIp->host);
+				remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
+				utils.report("Connected to: ");
+				utils.report(remoteIp->host);
 
-	SDLNet_TCP_Close(serverSocket);
-	SDLNet_TCP_Close(socketDescriptor);
+				SDLNet_TCP_Close(serverSocket);
+			}
+
+			SDLNet_TCP_Close(socketDescriptor);
+		}
+	}
 
 	SDLNet_Quit();
 
