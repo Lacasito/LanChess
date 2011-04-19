@@ -15,6 +15,8 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+//FIXME: Close sockets at the end of the program execution!
+
 #include "GraphicsEngine.h"
 #include "configLoader.h"
 #include <iostream>
