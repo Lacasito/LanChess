@@ -33,7 +33,6 @@ class Board {
 
 	private:
 		square boardSquares[8][8];
-		LCVAR_Color playerColor;
 
 		bool	legalMove (int fromX, int fromY, int toX, int toY) const;
 
@@ -48,6 +47,8 @@ class Board {
 	public:
 		Board (LCVAR_Color color);
 		~Board ();
+
+		LCVAR_Color playerColor;
 
 		Piece*	getPiece(int x, int y) const;
 		void	addPiece(LCVAR_PieceType pieceType, LCVAR_Color pieceColor,
