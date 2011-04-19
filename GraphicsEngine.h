@@ -23,6 +23,7 @@
 #include <string>
 #include "CommonTypes.h"
 #include "SDL/SDL_net.h"
+#include "DevUtils.h"
 
 
 class GraphicsEngine {
@@ -39,6 +40,8 @@ class GraphicsEngine {
 
 		TCPsocket serverSocket, clientSocket;
 		IPaddress localIp, *remoteIp;
+
+		SwissKnife utils;
 
 		//TODO: Use a #define instead?
 		std::string windowTitle;
