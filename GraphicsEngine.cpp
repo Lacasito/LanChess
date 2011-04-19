@@ -344,7 +344,7 @@ bool GraphicsEngine::hostGame(){
 				if (!(serverSocket = SDLNet_TCP_Accept(socketDescriptor))){
 					utils.report("ERROR ACCEPTING");
 				}else{
-
+					quit = true;
 					remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
 					utils.report("Connected to: ");
 					utils.report(remoteIp->host);
