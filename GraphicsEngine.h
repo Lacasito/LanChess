@@ -54,6 +54,7 @@ class GraphicsEngine {
 		void posToSquare(SDL_Rect& pos, SDL_Rect& square);
 		void makeWhite(SDL_Surface* source);
 		void intToString(int in, std::string& out);
+		TCPsocket TCP_Wait_Accept_Wrapper(TCPsocket in);
 
 	public:
 		GraphicsEngine();

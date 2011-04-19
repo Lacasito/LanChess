@@ -313,7 +313,6 @@ bool GraphicsEngine::connectTo(const string& ip){
 	SDLNet_ResolveHost(&localIp, ip.c_str(), 9999);
 
 	socketDescriptor = SDLNet_TCP_Open(&localIp);
-	utils.report("Connected");
 
 	SDLNet_TCP_Close(socketDescriptor);
 
@@ -326,31 +325,23 @@ bool GraphicsEngine::hostGame(){
 	//TODO:Clean this up, make functions!
 
 	bool res = false;
-	bool quit = false;
 
 	//TODO:Change the port number
 	if (SDLNet_ResolveHost(&localIp, 0, 9999) < 0){
 		utils.report("ERROR RESOLVING HOST");
 	}else{
-		utils.report(localIp.host);
-		utils.report(" on port ");
-		utils.report(localIp.port);
-		utils.report('\n');
-
 		if (!(socketDescriptor = SDLNet_TCP_Open(&localIp))){
 			utils.report("ERROR BINDING");
 		}else{
-			while(!quit){
-				if (!(serverSocket = SDLNet_TCP_Accept(socketDescriptor))){
-					utils.report("ERROR ACCEPTING");
-				}else{
-					quit = true;
-					remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
-					utils.report("Connected to: ");
-					utils.report(remoteIp->host);
 
-					SDLNet_TCP_Close(serverSocket);
-				}
+			serverSocket = TCP_Wait_Accept_Wrapper(socketDescriptor);
+
+			if(serverSocket == 0){
+				utils.report("ERROR WAITING FOR CONNECTION");
+			}else{
+
+				remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
+				SDLNet_TCP_Close(serverSocket);
 			}
 
 			SDLNet_TCP_Close(socketDescriptor);
@@ -360,4 +351,16 @@ bool GraphicsEngine::hostGame(){
 	SDLNet_Quit();
 
 	return true;
+}
+
+TCPsocket GraphicsEngine::TCP_Wait_Accept_Wrapper(TCPsocket in){
+//TODO: Don't use usleep for this....
+
+	TCPsocket res = 0;
+
+	while(!(res = SDLNet_TCP_Accept(in))){
+		usleep(5000);
+	}
+
+	return res;
 }
