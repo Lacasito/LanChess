@@ -312,10 +312,6 @@ bool GraphicsEngine::connectTo(const string& ip){
 
 	socketDescriptor = SDLNet_TCP_Open(&localIp);
 
-	SDLNet_TCP_Close(socketDescriptor);
-
-	SDLNet_Quit();
-
 	return true;
 }
 
@@ -337,14 +333,10 @@ bool GraphicsEngine::hostGame(){
 			}else{
 
 				remoteIp = SDLNet_TCP_GetPeerAddress(socketDescriptor);
-				SDLNet_TCP_Close(socketDescriptor);
 			}
 
-			SDLNet_TCP_Close(serverSocket);
 		}
 	}
-
-	SDLNet_Quit();
 
 	return true;
 }
