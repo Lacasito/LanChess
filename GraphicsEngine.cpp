@@ -307,8 +307,6 @@ void GraphicsEngine::intToString(int in, std::string& out){
 
 bool GraphicsEngine::connectTo(const string& ip){
 
-	bool res = false;
-
 	//TODO:Change the port number
 	SDLNet_ResolveHost(&localIp, ip.c_str(), 9999);
 
@@ -324,27 +322,25 @@ bool GraphicsEngine::connectTo(const string& ip){
 bool GraphicsEngine::hostGame(){
 	//TODO:Clean this up, make functions!
 
-	bool res = false;
-
 	//TODO:Change the port number
 	if (SDLNet_ResolveHost(&localIp, 0, 9999) < 0){
-		utils.report("ERROR RESOLVING HOST");
+		utils.report("ERROR RESOLVING HOST\n");
 	}else{
-		if (!(socketDescriptor = SDLNet_TCP_Open(&localIp))){
-			utils.report("ERROR BINDING");
+		if (!(serverSocket = SDLNet_TCP_Open(&localIp))){
+			utils.report("ERROR BINDING\n");
 		}else{
 
-			serverSocket = TCP_Wait_Accept_Wrapper(socketDescriptor);
+			socketDescriptor = TCP_Wait_Accept_Wrapper(serverSocket);
 
-			if(serverSocket == 0){
-				utils.report("ERROR WAITING FOR CONNECTION");
+			if(socketDescriptor == 0){
+				utils.report("ERROR WAITING FOR CONNECTION\n");
 			}else{
 
-				remoteIp = SDLNet_TCP_GetPeerAddress(serverSocket);
-				SDLNet_TCP_Close(serverSocket);
+				remoteIp = SDLNet_TCP_GetPeerAddress(socketDescriptor);
+				SDLNet_TCP_Close(socketDescriptor);
 			}
 
-			SDLNet_TCP_Close(socketDescriptor);
+			SDLNet_TCP_Close(serverSocket);
 		}
 	}
 
