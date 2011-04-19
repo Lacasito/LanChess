@@ -34,6 +34,8 @@ Game::Game(char** argv){
 			netMode = SERVER;
 		}else if (*argv[2] == 'c'){
 			netMode = CLIENT;
+		}else if (*argv[2] == 'l'){
+			netMode = LOCAL;
 		}
 
 	}
