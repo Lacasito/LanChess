@@ -188,3 +188,8 @@ void Game::resetEvent(LCVAR_Event& event)
 
 	event.type = NOTHING;
 }
+
+bool Game::establishConnection(const std::string& ip){
+
+	return engine->connectTo(ip);
+}

@@ -302,3 +302,7 @@ void GraphicsEngine::intToString(int in, std::string& out){
 	out = ss.str();
 }
 
+bool GraphicsEngine::connectTo(const string& ip){
+
+	return false;
+}

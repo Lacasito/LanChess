@@ -37,6 +37,7 @@ class Game {
 		void handleErrors(short errorCode);
 		void drawToScreen();
 		void resetEvent(LCVAR_Event& event);
+		bool establishConnection(const std::string& ip);
 
 	public:
 		Game(char** argv);
