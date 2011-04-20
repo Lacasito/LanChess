@@ -33,7 +33,7 @@ class Game {
 		SwissKnife utils;
 
 		void getEvent(LCVAR_Event& event);
-		void parseUserInput(LCVAR_Event& event);
+		void parseEvent(LCVAR_Event& event);
 		void drawPieces();
 		void drawBoard();
 		void refreshScreen();
