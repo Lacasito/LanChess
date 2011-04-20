@@ -59,7 +59,7 @@ void Game::run()
 
 	turn = WHITE;
 
-	bool gameEnd = false;
+	bool gameEnd = false, validMove = false;
 	short errorCode = 0;
 
 	//TODO: Don't hardcode these settings
@@ -74,30 +74,17 @@ void Game::run()
 
 	while (!gameEnd){
 
-		if (netMode != LOCAL){
-			if(turn == board->playerColor){
-				getEvent(gameEvent);
-				if (gameEvent.type == MOVE){
-					engine->sendEvent(gameEvent);
-				}
-			}else{
-				engine->getForeignEvent(gameEvent);
-			}
-		}else{
-				getEvent(gameEvent);
+		while ((!validMove)&&(!gameEnd)){
+
+			getEvent(gameEvent);
+			parseEvent(gameEvent, validMove, gameEnd);
+
+			drawToScreen();
+
+			resetEvent(gameEvent);
 		}
 
-		if(gameEvent.type == QUIT){
-
-			gameEnd = true;
-
-		}
-
-		parseEvent(gameEvent);
-
-		drawToScreen();
-
-		resetEvent(gameEvent);
+		validMove = false;
 
 		(turn == WHITE)? turn = BLACK: turn = WHITE;
 
@@ -162,6 +149,7 @@ void Game::handleErrors(short errorCode)
 
 		case 2:
 			std::cout << "ERROR: Screen error" << std::endl;
+			break;
 
 		default:
 			if (errorCode > 0){
@@ -171,6 +159,22 @@ void Game::handleErrors(short errorCode)
 }
 
 void Game::getEvent(LCVAR_Event& event)
+{
+	if ((netMode == LOCAL)||(turn == board->playerColor)){
+		getLocalEvent(event);
+	}else{
+		getExternalEvent(event);
+	}
+
+}
+
+void Game::getExternalEvent(LCVAR_Event& event){
+
+	engine->getForeignEvent(event);
+
+}
+
+void Game::getLocalEvent(LCVAR_Event& event)
 {
 	LCVAR_Event dummyEvent;
 	dummyEvent.type = NOTHING;
@@ -194,10 +198,10 @@ void Game::getEvent(LCVAR_Event& event)
 	}else if(event.type == PIECE_SELECT){ //Means we clicked over an empty square.
 		event.type = NOTHING;
 	}
-
 }
-void Game::Event(LCVAR_Event& event)
-{//Process user input
+void Game::parseEvent(LCVAR_Event& event, bool& validMove, bool& userQuit)
+{
+	validMove = false;
 
 	if (event.type == MOVE){
 
@@ -206,7 +210,14 @@ void Game::Event(LCVAR_Event& event)
 		int toX = atoi (event.param[2].c_str());
 		int toY = atoi (event.param[3].c_str());
 
-		board->movePiece(fromX, fromY, toX, toY);
+		if (board->movePiece(fromX, fromY, toX, toY)){
+			validMove = true;
+
+			engine->sendEvent(event);
+
+		}
+	}else if (event.type == QUIT){
+		userQuit = true;
 	}
 }
 

@@ -108,12 +108,14 @@ void Board::addPiece (Piece*& piece, int x , int y)
 	piece = 0;
 }
 
-void Board::movePiece (int fromX, int fromY, int toX, int toY) {
+bool Board::movePiece (int fromX, int fromY, int toX, int toY) {
+
+	bool valid = false;
 
 	if ( !isEmpty(fromX, fromY) ) { //a piece exists
 
 		if ( legalMove(fromX, fromY, toX, toY) ) {
-			//the move is valid
+			valid = true;
 
 			if (!isEmpty(toX, toY)){
 				delete boardSquares[toX][toY].piece;
@@ -126,6 +128,8 @@ void Board::movePiece (int fromX, int fromY, int toX, int toY) {
 		}
 
 	}
+
+	return valid;
 }
 
 bool Board::isEmpty(int x, int y) const
@@ -238,8 +242,9 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 
 	//the piece at [fromX][fromY] must exist!
 	LCVAR_PieceType type = getPiece(fromX, fromY)->getType();
+	LCVAR_Color pieceColor = getPiece(fromX, fromY)->getColor();
 
-	if(toX == fromX && toY == fromY){
+	if((toX == fromX && toY == fromY) || (pieceColor != playerColor)){
 
 			isLegal = false;
 
