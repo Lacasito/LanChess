@@ -357,6 +357,7 @@ TCPsocket GraphicsEngine::TCP_Wait_Accept_Wrapper(TCPsocket in){
 
 void GraphicsEngine::getForeignEvent(LCVAR_Event& event){
 	int buffer[4];
+	int fromX, fromY, toX, toY;
 
 	SDLNet_TCP_Recv(socketDescriptor, &buffer[0], sizeof(int));
 	SDLNet_TCP_Recv(socketDescriptor, &buffer[1], sizeof(int));
@@ -367,8 +368,29 @@ void GraphicsEngine::getForeignEvent(LCVAR_Event& event){
 		intToString(buffer[i], event.param[i]);
 	}
 
-	event.type = MOVE;
+	//FIXME: This should be another method, read below
+
+	//From this point we "Patch" the event to make it external,
+	//we change the type, we set param[9] to "EXTERNAL" and we
+	//mirror the movement
+
+	event.type= MOVE;
 	event.param[9] = "EXTERNAL";
+
+	fromX = atoi(event.param[0].c_str());
+	fromY = atoi(event.param[1].c_str());
+	toX = atoi(event.param[2].c_str());
+	toY = atoi(event.param[3].c_str());
+
+	fromX = 7 - fromX;
+	fromY = 7 - fromY;
+	toX = 7 - toX;
+	toY = 7 - toY;
+
+	intToString(fromX, event.param[0]);
+	intToString(fromY, event.param[1]);
+	intToString(toX, event.param[2]);
+	intToString(toY, event.param[3]);
 }
 
 void GraphicsEngine::sendEvent(const LCVAR_Event& event){
