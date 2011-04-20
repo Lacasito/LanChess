@@ -22,7 +22,7 @@ int main(int argc, char** argv)
 {
 	Game* lanchess = 0;
 
-	if (argc < 2){
+	if (argc != 3){
 
 		std::cout << "You must provide arguments!, type \"./lanchess w\" or \"./lanchess b\"" << std::endl;
 
