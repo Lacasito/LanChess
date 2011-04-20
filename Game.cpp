@@ -202,6 +202,7 @@ void Game::getLocalEvent(LCVAR_Event& event)
 void Game::parseEvent(LCVAR_Event& event, bool& validMove, bool& userQuit)
 {
 	validMove = false;
+	LCVAR_Color userColor = board->playerColor;
 
 	if (event.type == MOVE){
 
@@ -210,7 +211,11 @@ void Game::parseEvent(LCVAR_Event& event, bool& validMove, bool& userQuit)
 		int toX = atoi (event.param[2].c_str());
 		int toY = atoi (event.param[3].c_str());
 
-		if (board->movePiece(fromX, fromY, toX, toY)){
+		if (event.param[9] == "EXTERNAL"){
+			(userColor == WHITE)? userColor = BLACK: userColor = WHITE;
+		}
+
+		if (board->movePiece(fromX, fromY, toX, toY, userColor)){
 			validMove = true;
 
 			engine->sendEvent(event);
@@ -235,6 +240,9 @@ void Game::resetEvent(LCVAR_Event& event)
 	//of the main loop.
 
 	event.type = NOTHING;
+	for(int i = 0; i < 10; ++i){
+		event.param[i] = "";
+	}
 }
 
 bool Game::establishConnection(const std::string& ip)

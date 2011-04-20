@@ -108,13 +108,13 @@ void Board::addPiece (Piece*& piece, int x , int y)
 	piece = 0;
 }
 
-bool Board::movePiece (int fromX, int fromY, int toX, int toY) {
+bool Board::movePiece (int fromX, int fromY, int toX, int toY, LCVAR_Color userColor) {
 
 	bool valid = false;
 
 	if ( !isEmpty(fromX, fromY) ) { //a piece exists
 
-		if ( legalMove(fromX, fromY, toX, toY) ) {
+		if ( legalMove(fromX, fromY, toX, toY, userColor) ) {
 			valid = true;
 
 			if (!isEmpty(toX, toY)){
@@ -228,7 +228,7 @@ bool Board::isClearColumn(int fromX, int fromY, int toX, int toY) const
 
 }
 
-bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
+bool Board::legalMove (int fromX, int fromY, int toX, int toY, LCVAR_Color userColor) const
 {
 	bool isLegal = false;
 
@@ -244,7 +244,7 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY) const
 	LCVAR_PieceType type = getPiece(fromX, fromY)->getType();
 	LCVAR_Color pieceColor = getPiece(fromX, fromY)->getColor();
 
-	if((toX == fromX && toY == fromY) || (pieceColor != playerColor)){
+	if((toX == fromX && toY == fromY) || (pieceColor != userColor)){
 
 			isLegal = false;
 
