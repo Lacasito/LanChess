@@ -368,6 +368,7 @@ void GraphicsEngine::getForeignEvent(LCVAR_Event& event){
 	}
 
 	event.type = MOVE;
+	event.param[9] = "EXTERNAL";
 }
 
 void GraphicsEngine::sendEvent(const LCVAR_Event& event){
