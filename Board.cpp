@@ -246,7 +246,11 @@ bool Board::legalMove (int fromX, int fromY, int toX, int toY, LCVAR_Color userC
 
 	if((toX == fromX && toY == fromY) || (pieceColor != userColor)){
 
-			isLegal = false;
+		isLegal = false;
+
+	}else if (userColor != playerColor){
+		//FIXME: This might be dangerous
+		isLegal = true;
 
 	}else if (type == KNIGHT){
 
